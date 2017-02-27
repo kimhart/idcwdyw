@@ -26,9 +26,14 @@ app.post('/api/search', function(req ,res) {
     radius: 1609,
     open_now: true
   }).then(response => {
-    const options = response.jsonBody.businesses;
-    const option = options[Math.floor(Math.random()*options.length)];
-    res.send(option);
+    if (response.jsonBody.businesses.length === 0) {
+      console.log("nope")
+      res.send("Error");
+    } else {
+      const options = response.jsonBody.businesses;
+      const option = options[Math.floor(Math.random()*options.length)];
+      res.send(option);
+    }
   }).catch(e => {
     console.log(e);
   });

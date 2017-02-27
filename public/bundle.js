@@ -27398,9 +27398,18 @@
 	    var _this = _possibleConstructorReturn(this, (MainPage.__proto__ || Object.getPrototypeOf(MainPage)).call(this, props));
 	
 	    _this.handleChange = function (option) {
-	      _this.setState({
-	        location: option
-	      });
+	      console.log(option);
+	      if (option === "Error") {
+	        _this.setState({
+	          location: {},
+	          error: "Either that address is wrong, or you're currently in a wasteland."
+	        });
+	      } else {
+	        _this.setState({
+	          location: option,
+	          error: null
+	        });
+	      }
 	    };
 	
 	    _this.getCategories = function () {
@@ -27416,7 +27425,8 @@
 	
 	    _this.getCategories = _this.getCategories.bind(_this);
 	    _this.state = {
-	      location: {}
+	      location: {},
+	      error: null
 	    };
 	    return _this;
 	  }
@@ -27425,11 +27435,17 @@
 	    key: 'render',
 	    value: function render() {
 	      var location = this.state.location;
+	      var error = this.state.error;
 	      return _react2.default.createElement(
 	        'div',
 	        { className: 'main' },
 	        _react2.default.createElement(_Explainer2.default, null),
 	        _react2.default.createElement(_AddressForm2.default, { updateLocation: this.handleChange }),
+	        error && _react2.default.createElement(
+	          'p',
+	          { className: 'error' },
+	          this.state.error
+	        ),
 	        location.id && _react2.default.createElement(
 	          'div',
 	          { className: 'display' },
@@ -27589,7 +27605,18 @@
 	        _react2.default.createElement(
 	          "h2",
 	          null,
-	          "Chill. This picks a random restaurant within a mile of your location, so you don't have to use your brain AT ALL \uD83C\uDF08"
+	          "Chill. This picks a random restaurant within a 1 mile radius of your location, so you don't have to use your brain AT ALL \uD83C\uDF08"
+	        ),
+	        _react2.default.createElement(
+	          "p",
+	          null,
+	          "PS this app is only for the truly lazy. If you want filters and options and all that jazz, go hangout on ",
+	          _react2.default.createElement(
+	            "a",
+	            { href: "https://yelp.com" },
+	            "Yelp"
+	          ),
+	          "."
 	        )
 	      );
 	    }
@@ -27675,15 +27702,15 @@
 	            }, className: 'address-form', onSubmit: function onSubmit(e) {
 	              return _this3.getLocation(e);
 	            } },
-	          _react2.default.createElement('input', { name: 'address', ref: function ref(input) {
+	          _react2.default.createElement('input', { required: true, name: 'address', ref: function ref(input) {
 	              return _this3.address = input;
 	            }, type: 'text', placeholder: 'Address' }),
-	          _react2.default.createElement('input', { name: 'city', ref: function ref(input) {
+	          _react2.default.createElement('input', { required: true, name: 'city', ref: function ref(input) {
 	              return _this3.city = input;
 	            }, type: 'text', placeholder: 'City' }),
 	          _react2.default.createElement(
 	            'select',
-	            { name: 'state', ref: function ref(input) {
+	            { required: true, name: 'state', ref: function ref(input) {
 	                return _this3.shortState = input;
 	              }, defaultValue: this.state.value, onChange: this.handleStatePicker },
 	            _react2.default.createElement(

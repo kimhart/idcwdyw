@@ -32,9 +32,9 @@ class AddressForm extends React.Component {
     return (
       <div className="form-container">
         <form action="/api" method="post" ref={(input) => this.addressForm = input}  className="address-form" onSubmit={(e) => this.getLocation(e)}>
-          <input name="address" ref={(input) => this.address = input} type="text" placeholder="Address" />
-          <input name="city" ref={(input) => this.city = input} type="text" placeholder="City" />
-          <select name="state" ref={(input) => this.shortState = input} defaultValue={this.state.value} onChange={this.handleStatePicker}>
+          <input required name="address" ref={(input) => this.address = input} type="text" placeholder="Address" />
+          <input required name="city" ref={(input) => this.city = input} type="text" placeholder="City" />
+          <select required name="state" ref={(input) => this.shortState = input} defaultValue={this.state.value} onChange={this.handleStatePicker}>
             <option disabled value="state">State</option>
             <option value="AL">AL</option>
             <option value="AK">AK</option>

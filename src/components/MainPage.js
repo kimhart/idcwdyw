@@ -8,14 +8,24 @@ class MainPage extends React.Component {
     super(props);
     this.getCategories = this.getCategories.bind(this);
     this.state = {
-      location: {}
+      location: {},
+      error: null
     }
   }
 
   handleChange = (option) => {
-    this.setState({
-      location: option
-    })
+    console.log(option);
+    if (option === "Error") {
+      this.setState({
+        location: {},
+        error: "Either that address is wrong, or you're currently in a wasteland."
+      })
+    } else {
+      this.setState({
+        location: option,
+        error: null
+      })
+    }
   }
 
   getCategories = () => {
@@ -25,10 +35,14 @@ class MainPage extends React.Component {
 
   render() {
     let location = this.state.location;
+    let error = this.state.error;
     return (
       <div className="main">
         <Explainer />
         <AddressForm updateLocation={this.handleChange} />
+        { error &&
+          <p className="error">{this.state.error}</p>
+        }
         { location.id && 
         <div className="display">
           <h2>Congratulations, you're going to:</h2>
