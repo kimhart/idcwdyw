@@ -1,26 +1,30 @@
 import React from 'react';
-// import axios from 'axios';
 
 class AddressForm extends React.Component {
 
   constructor(props) {
     super(props);
-    this.state = {value: 'state'};
     this.handleStatePicker = this.handleStatePicker.bind(this);
+    this.state = {
+      value: 'state'
+    };
   }
 
-  handleStatePicker(e) {
+  handleStatePicker = (e) => {
     this.setState = {value: event.target.value};
   }
 
-  getLocation(e) {
+  getLocation = (e) => {
     e.preventDefault();
-    this.setState = {}
-    let $data = $('.address-form').serialize();   
+    let _this = this;
+    let data = $('.address-form').serialize();  
     $.ajax({
-      url: '/api',
+      url: '/api/search',
       type: 'post',
-      data: $data
+      data: data,
+      success:function(option) {
+        _this.props.updateLocation(option);
+      }
     })
   };
 
@@ -84,7 +88,7 @@ class AddressForm extends React.Component {
             <option value="WI">WI</option>
             <option value="WY">WY</option>
           </select>
-          <input type="submit" value="Pick!" />
+          <input type="submit" value="GO!" />
         </form>
       </div>
     )

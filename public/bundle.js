@@ -22063,7 +22063,7 @@
 	
 	var _MainPage2 = _interopRequireDefault(_MainPage);
 	
-	var _NotFound = __webpack_require__(/*! ./components/NotFound */ 238);
+	var _NotFound = __webpack_require__(/*! ./components/NotFound */ 236);
 	
 	var _NotFound2 = _interopRequireDefault(_NotFound);
 	
@@ -27373,11 +27373,11 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _Explainer = __webpack_require__(/*! ./Explainer */ 236);
+	var _Explainer = __webpack_require__(/*! ./Explainer */ 237);
 	
 	var _Explainer2 = _interopRequireDefault(_Explainer);
 	
-	var _AddressForm = __webpack_require__(/*! ./AddressForm */ 237);
+	var _AddressForm = __webpack_require__(/*! ./AddressForm */ 238);
 	
 	var _AddressForm2 = _interopRequireDefault(_AddressForm);
 	
@@ -27392,11 +27392,29 @@
 	var MainPage = function (_React$Component) {
 	  _inherits(MainPage, _React$Component);
 	
-	  function MainPage() {
+	  function MainPage(props) {
 	    _classCallCheck(this, MainPage);
 	
-	    var _this = _possibleConstructorReturn(this, (MainPage.__proto__ || Object.getPrototypeOf(MainPage)).call(this));
+	    var _this = _possibleConstructorReturn(this, (MainPage.__proto__ || Object.getPrototypeOf(MainPage)).call(this, props));
 	
+	    _this.handleChange = function (option) {
+	      _this.setState({
+	        location: option
+	      });
+	    };
+	
+	    _this.getCategories = function () {
+	      var categories = _this.state.location.categories;
+	      return categories ? categories.map(function (category, index) {
+	        return _react2.default.createElement(
+	          'li',
+	          { key: index },
+	          category.title
+	        );
+	      }) : null;
+	    };
+	
+	    _this.getCategories = _this.getCategories.bind(_this);
 	    _this.state = {
 	      location: {}
 	    };
@@ -27406,11 +27424,31 @@
 	  _createClass(MainPage, [{
 	    key: 'render',
 	    value: function render() {
+	      var location = this.state.location;
 	      return _react2.default.createElement(
 	        'div',
 	        { className: 'main' },
 	        _react2.default.createElement(_Explainer2.default, null),
-	        _react2.default.createElement(_AddressForm2.default, null)
+	        _react2.default.createElement(_AddressForm2.default, { updateLocation: this.handleChange }),
+	        location.id && _react2.default.createElement(
+	          'div',
+	          { className: 'display' },
+	          _react2.default.createElement(
+	            'h2',
+	            null,
+	            'Congratulations, you\'re going to:'
+	          ),
+	          _react2.default.createElement(
+	            'h3',
+	            null,
+	            location.name
+	          ),
+	          _react2.default.createElement(
+	            'ul',
+	            null,
+	            this.getCategories()
+	          )
+	        )
 	      );
 	    }
 	  }]);
@@ -27422,6 +27460,74 @@
 
 /***/ },
 /* 236 */
+/*!************************************!*\
+  !*** ./src/components/NotFound.js ***!
+  \************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	var _react = __webpack_require__(/*! react */ 1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _reactDom = __webpack_require__(/*! react-dom */ 32);
+	
+	var _reactDom2 = _interopRequireDefault(_reactDom);
+	
+	var _reactRouter = __webpack_require__(/*! react-router */ 179);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	var NotFound = function (_React$Component) {
+	  _inherits(NotFound, _React$Component);
+	
+	  function NotFound() {
+	    _classCallCheck(this, NotFound);
+	
+	    return _possibleConstructorReturn(this, (NotFound.__proto__ || Object.getPrototypeOf(NotFound)).apply(this, arguments));
+	  }
+	
+	  _createClass(NotFound, [{
+	    key: 'render',
+	    value: function render() {
+	      return _react2.default.createElement(
+	        'div',
+	        { className: 'not-found' },
+	        _react2.default.createElement(
+	          'h2',
+	          null,
+	          'Go ',
+	          _react2.default.createElement(
+	            _reactRouter.Link,
+	            { to: '/' },
+	            'home'
+	          ),
+	          ', human. You\'re drunk.'
+	        )
+	      );
+	    }
+	  }]);
+	
+	  return NotFound;
+	}(_react2.default.Component);
+	
+	exports.default = NotFound;
+
+/***/ },
+/* 237 */
 /*!*************************************!*\
   !*** ./src/components/Explainer.js ***!
   \*************************************/
@@ -27467,7 +27573,15 @@
 	          null,
 	          "Are you indecisive af? ",
 	          _react2.default.createElement("br", null),
-	          "Have trouble picking a restaurant? ",
+	          "Did someone just ask you where you want to eat?",
+	          _react2.default.createElement("br", null),
+	          "Did you say",
+	          _react2.default.createElement("br", null),
+	          _react2.default.createElement(
+	            "span",
+	            null,
+	            "\"I don't care, what do you want?\"\u2122"
+	          ),
 	          _react2.default.createElement("br", null),
 	          "Is your significant other tired of your shit? ",
 	          _react2.default.createElement("br", null)
@@ -27475,12 +27589,7 @@
 	        _react2.default.createElement(
 	          "h2",
 	          null,
-	          "Chill. We'll find one. (You can take credit, though.)"
-	        ),
-	        _react2.default.createElement(
-	          "p",
-	          null,
-	          "Type in your address and we'll randomly select a restaurant within 1 mile of you."
+	          "Chill. This picks a random restaurant within a mile of your location, so you don't have to use your brain AT ALL \uD83C\uDF08"
 	        )
 	      );
 	    }
@@ -27492,7 +27601,7 @@
 	exports.default = Explainer;
 
 /***/ },
-/* 237 */
+/* 238 */
 /*!***************************************!*\
   !*** ./src/components/AddressForm.js ***!
   \***************************************/
@@ -27518,42 +27627,43 @@
 	
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 	
-	// import axios from 'axios';
-	
 	var AddressForm = function (_React$Component) {
 	  _inherits(AddressForm, _React$Component);
 	
 	  function AddressForm(props) {
 	    _classCallCheck(this, AddressForm);
 	
-	    var _this = _possibleConstructorReturn(this, (AddressForm.__proto__ || Object.getPrototypeOf(AddressForm)).call(this, props));
+	    var _this2 = _possibleConstructorReturn(this, (AddressForm.__proto__ || Object.getPrototypeOf(AddressForm)).call(this, props));
 	
-	    _this.state = { value: 'state' };
-	    _this.handleStatePicker = _this.handleStatePicker.bind(_this);
-	    return _this;
+	    _this2.handleStatePicker = function (e) {
+	      _this2.setState = { value: event.target.value };
+	    };
+	
+	    _this2.getLocation = function (e) {
+	      e.preventDefault();
+	      var _this = _this2;
+	      var data = $('.address-form').serialize();
+	      $.ajax({
+	        url: '/api/search',
+	        type: 'post',
+	        data: data,
+	        success: function success(option) {
+	          _this.props.updateLocation(option);
+	        }
+	      });
+	    };
+	
+	    _this2.handleStatePicker = _this2.handleStatePicker.bind(_this2);
+	    _this2.state = {
+	      value: 'state'
+	    };
+	    return _this2;
 	  }
 	
 	  _createClass(AddressForm, [{
-	    key: 'handleStatePicker',
-	    value: function handleStatePicker(e) {
-	      this.setState = { value: event.target.value };
-	    }
-	  }, {
-	    key: 'getLocation',
-	    value: function getLocation(e) {
-	      e.preventDefault();
-	      this.setState = {};
-	      var $data = $('.address-form').serialize();
-	      $.ajax({
-	        url: '/api',
-	        type: 'post',
-	        data: $data
-	      });
-	    }
-	  }, {
 	    key: 'render',
 	    value: function render() {
-	      var _this2 = this;
+	      var _this3 = this;
 	
 	      return _react2.default.createElement(
 	        'div',
@@ -27561,20 +27671,20 @@
 	        _react2.default.createElement(
 	          'form',
 	          { action: '/api', method: 'post', ref: function ref(input) {
-	              return _this2.addressForm = input;
+	              return _this3.addressForm = input;
 	            }, className: 'address-form', onSubmit: function onSubmit(e) {
-	              return _this2.getLocation(e);
+	              return _this3.getLocation(e);
 	            } },
 	          _react2.default.createElement('input', { name: 'address', ref: function ref(input) {
-	              return _this2.address = input;
+	              return _this3.address = input;
 	            }, type: 'text', placeholder: 'Address' }),
 	          _react2.default.createElement('input', { name: 'city', ref: function ref(input) {
-	              return _this2.city = input;
+	              return _this3.city = input;
 	            }, type: 'text', placeholder: 'City' }),
 	          _react2.default.createElement(
 	            'select',
 	            { name: 'state', ref: function ref(input) {
-	                return _this2.shortState = input;
+	                return _this3.shortState = input;
 	              }, defaultValue: this.state.value, onChange: this.handleStatePicker },
 	            _react2.default.createElement(
 	              'option',
@@ -27837,7 +27947,7 @@
 	              'WY'
 	            )
 	          ),
-	          _react2.default.createElement('input', { type: 'submit', value: 'Pick!' })
+	          _react2.default.createElement('input', { type: 'submit', value: 'GO!' })
 	        )
 	      );
 	    }
@@ -27847,74 +27957,6 @@
 	}(_react2.default.Component);
 	
 	exports.default = AddressForm;
-
-/***/ },
-/* 238 */
-/*!************************************!*\
-  !*** ./src/components/NotFound.js ***!
-  \************************************/
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-	
-	var _react = __webpack_require__(/*! react */ 1);
-	
-	var _react2 = _interopRequireDefault(_react);
-	
-	var _reactDom = __webpack_require__(/*! react-dom */ 32);
-	
-	var _reactDom2 = _interopRequireDefault(_reactDom);
-	
-	var _reactRouter = __webpack_require__(/*! react-router */ 179);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-	
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-	
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-	
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-	
-	var NotFound = function (_React$Component) {
-	  _inherits(NotFound, _React$Component);
-	
-	  function NotFound() {
-	    _classCallCheck(this, NotFound);
-	
-	    return _possibleConstructorReturn(this, (NotFound.__proto__ || Object.getPrototypeOf(NotFound)).apply(this, arguments));
-	  }
-	
-	  _createClass(NotFound, [{
-	    key: 'render',
-	    value: function render() {
-	      return _react2.default.createElement(
-	        'div',
-	        { className: 'not-found' },
-	        _react2.default.createElement(
-	          'h2',
-	          null,
-	          'Go ',
-	          _react2.default.createElement(
-	            _reactRouter.Link,
-	            { to: '/' },
-	            'home'
-	          ),
-	          ', human. You\'re drunk.'
-	        )
-	      );
-	    }
-	  }]);
-	
-	  return NotFound;
-	}(_react2.default.Component);
-	
-	exports.default = NotFound;
 
 /***/ }
 /******/ ]);

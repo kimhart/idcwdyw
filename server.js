@@ -18,7 +18,7 @@ app.get('/', function (req, res) {
   res.sendFile(path.resolve(__dirname, 'public', 'index.html'))
 })
 
-app.post('/api', function(req ,res) {
+app.post('/api/search', function(req ,res) {
   const location = req.body;
   client.search({
     location: `${location.address}, ${location.city}, ${location.state}`,
@@ -28,7 +28,7 @@ app.post('/api', function(req ,res) {
   }).then(response => {
     const options = response.jsonBody.businesses;
     const option = options[Math.floor(Math.random()*options.length)];
-    console.log(option.name);
+    res.send(option);
   }).catch(e => {
     console.log(e);
   });
