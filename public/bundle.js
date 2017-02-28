@@ -27449,7 +27449,7 @@
 	  _createClass(MainPage, [{
 	    key: 'componentDidUpdate',
 	    value: function componentDidUpdate() {
-	      this.refs.display.scrollIntoViewIfNeeded({ behavior: "smooth" });
+	      // this.refs.display.scrollIntoViewIfNeeded({behavior: "smooth"});
 	
 	      var latLng = {
 	        lat: this.state.location.coordinates.latitude,
@@ -27503,7 +27503,7 @@
 	          _react2.default.createElement(_AddressForm2.default, { updateLocation: this.handleChange }),
 	          error && _react2.default.createElement(
 	            'p',
-	            { className: 'error' },
+	            { ref: 'errorMsg', className: 'error' },
 	            this.state.error
 	          ),
 	          location.id && _react2.default.createElement(
@@ -27675,7 +27675,7 @@
 	        _react2.default.createElement(
 	          "h2",
 	          null,
-	          "Are you indecisive af? ",
+	          "Are you indecisive as all hell? ",
 	          _react2.default.createElement("br", null),
 	          "When asked to pick food, do you say:",
 	          _react2.default.createElement("br", null),
@@ -27685,7 +27685,7 @@
 	            "\"I don't care, what do you want?\"\u2122"
 	          ),
 	          _react2.default.createElement("br", null),
-	          "Is your friend/significant other tired of your shit? ",
+	          "Are your friends and significant other tired of your shit? ",
 	          _react2.default.createElement("br", null)
 	        )
 	      );

@@ -133,6 +133,11 @@ h2 {
   cursor: pointer;
 }
 
+.error {
+  font-weight: 400;
+  color: #b5270a;
+}
+
 .display {
   box-sizing: border-box;
   width: 95%;
@@ -220,17 +225,23 @@ h3.congrats {
 @media (max-width: 620px) {
 
   h2 {
+    padding: 10px;
+  }
+
+  h3.congrats {
     font-size: 18px;
+    margin-top: 20px;
   }
 
   .main {
-    padding: 20px;
+    padding: 10px;
   }
   .form-container {
     padding: 0;
     align-items: center;
     display: flex;
     justify-content: center;
+    margin-bottom: 0;
   }
 
   .form-container input, .form-container select, .form-container button {
@@ -238,13 +249,88 @@ h3.congrats {
     margin: 5px auto;
     box-sizing: border-box;
   }
+
   .form-container select {
     background-position: 97% center;
   }
+
   .main p {
     width: 95%;
     margin: 0 auto;
+    padding-top: 10px;
     display: block;
+    font-size: 14px;
+  }
+
+  .display {
+    width: 100%;
+    padding: 5px;
+  }
+
+  .categories li {
+    font-size: 14px;
+    text-align: center;
+  }
+
+  .columns {
+    display: block;
+  }
+
+  .left, .right {
+    width: 100%;
+    box-sizing: border-box;
+    display: block;
+  }
+
+  .map {
+    height: 400px;
+  }
+}
+
+@media (max-width: 400px) {
+
+  h1 {
+    padding: 10px;
+  }
+
+  h2 {
+    padding: 10px;
+    font-size: 16px;
+  }
+
+  .main p {
+    font-size: 13px;
+  }
+
+  p.address {
+    font-size: 14px;
+    padding-top: 0;
+    margin-bottom: 20px;
+  }
+
+  h3.congrats {
+    font-size: 16px;
+  }
+
+  .categories {
+    display: block;
+    width: 100%;
+    margin: 0 auto;
+  }
+
+  .categories li {
+    width: 100%;
+    text-align: center;
+    padding-bottom: 5px;
+    margin: 0 auto;
+  }
+
+  .error {
+    margin-top: 0;
+  }
+
+  .restaurant-photo {
+    height: auto;
   }
 }
 

@@ -15,7 +15,7 @@ class MainPage extends React.Component {
   }
 
   componentDidUpdate() {
-    this.refs.display.scrollIntoViewIfNeeded({behavior: "smooth"});
+    // this.refs.display.scrollIntoViewIfNeeded({behavior: "smooth"});
 
     let latLng = {
       lat: this.state.location.coordinates.latitude,
@@ -78,7 +78,7 @@ class MainPage extends React.Component {
           <p>Pressure's off. This randomly picks one open restaurant within 2 miles of you, so you don't have to use your brain AT ALL 😏</p>  
           <AddressForm updateLocation={this.handleChange} />
           { error &&
-            <p className="error">{this.state.error}</p>
+            <p ref="errorMsg" className="error">{this.state.error}</p>
           }
           { location.id && 
           <div className="display" ref="display">
