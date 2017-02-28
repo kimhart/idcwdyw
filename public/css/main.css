@@ -140,7 +140,8 @@ h2 {
 
 .display {
   box-sizing: border-box;
-  width: 95%;
+  width: 80%;
+  max-width: 940px;
   margin: 20px auto;
   padding: 30px;
   display: block;

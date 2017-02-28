@@ -27449,7 +27449,6 @@
 	  _createClass(MainPage, [{
 	    key: 'componentDidUpdate',
 	    value: function componentDidUpdate() {
-	      // this.refs.display.scrollIntoViewIfNeeded({behavior: "smooth"});
 	
 	      var latLng = {
 	        lat: this.state.location.coordinates.latitude,

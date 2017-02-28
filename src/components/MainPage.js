@@ -15,7 +15,6 @@ class MainPage extends React.Component {
   }
 
   componentDidUpdate() {
-    // this.refs.display.scrollIntoViewIfNeeded({behavior: "smooth"});
 
     let latLng = {
       lat: this.state.location.coordinates.latitude,
