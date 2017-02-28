@@ -1,0 +1,236 @@
+@import url('https://fonts.googleapis.com/css?family=Poppins:300,400,600');
+
+body {
+  background: #EAEAEA;
+  font-family: 'Poppins', 'Arial', sans-serif;
+  font-weight: 300;
+  height: 100vh;
+  margin:0;
+  padding:0;
+  color: #4D4D4D;
+  display: flex;
+  flex-direction: column;
+}
+
+h1 {
+  font-weight: 400;
+  font-size: 22px;
+  color: #FFF;
+  padding: 20px;
+  margin: 0;
+}
+
+h2 {
+  color: #414141;
+  margin: 0 auto;
+  font-size: 20px;
+  padding: 30px 0;
+  text-align: center;
+  font-weight: 400;
+}
+
+.logo {
+  background: #8DC8C9;
+  margin: 0;
+  padding: 0;
+}
+
+.question {
+  color: #F46235;
+}
+
+.emphasis {
+  color: #F46235;
+  font-weight: 400;
+  width: 100%;
+  min-width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.explainer {
+  width: 100%;
+  min-width: 100%;
+  margin: 0;
+  background-color: #FFF;
+}
+
+.main {
+  box-sizing: border-box;
+  background-color: #EAEAEA;
+  margin: 0 auto;
+  width: 100%;
+  padding: 30px 10px;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.main p:first-child {
+  margin: 0 auto;
+}
+
+.main p {
+  font-size: 16px;
+  font-weight: 400;
+  text-align: center;
+  width: 60%;
+  margin: 0 auto;
+}
+
+.form-container {
+  display: flex;
+  justify-content: space-around;
+  flex-direction: row;
+  margin: 20px auto;
+  width: 100%;
+}
+
+.form-container input {
+  margin: 5px;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #AAA;
+  border-radius: 2px;
+  color: #4D4D4D;
+}
+
+::-webkit-input-placeholder {
+  color: #868686;;
+}
+
+.form-container select {
+  -webkit-appearance: button;
+  -webkit-border-radius: 2px;
+  -webkit-box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1);
+  background-color: #FFF;
+  background-image: url(http://i62.tinypic.com/15xvbd5.png);
+  background-position: 90% center;
+  background-repeat: no-repeat;
+  border: 1px solid #AAA;
+  font-size: inherit;
+  overflow: hidden;
+  padding: 10px 10px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width: 100px;
+  margin: 5px;
+  color: #4D4D4D;
+}
+
+.form-container select option:first-child {
+  color: #868686;
+}
+
+.form-container select option {
+  color: #4D4D4D;
+}
+
+.form-container input[type=submit] {
+  background-color: #F46235;
+  color: #FFF;
+  border: 0;
+  padding: 10px 20px;
+}
+
+
+h3.congrats {
+  text-align: center;
+  padding-bottom: 0;
+  color: #414141;
+  margin: 30px auto 0 auto;
+  font-weight: 400;
+}
+
+.name {
+  text-align: center;
+  text-transform: uppercase;
+  font-size: 26px;
+  margin: 5px;
+}
+
+.name a, .name a:hover, .name a:active, .name a:visited {
+  text-decoration: none;
+  color: #4D4D4D;
+  color: #F46235;
+}
+
+.categories {
+  list-style-type: none;
+  display: inline-flex;
+  justify-content: center;
+  width: 100%;
+  padding-left: 0;
+  margin-top: 0 auto 30px auto;
+}
+
+.categories li {
+  color: #4D4D4D;
+  margin: 0 20px;
+  line-height: 1em;
+}
+
+.material-icons {
+  color: #8DC8C9;
+  line-height: 1em;
+  vertical-align: middle;
+}
+
+.columns {
+  display: flex;
+  flex-direction: row;
+}
+
+.left, .right {
+  flex-grow: 1;
+  width: 50%;
+  padding: 10px;
+}
+
+img.restaurant-photo {
+  width: 100%;
+}
+
+
+
+
+
+@media (max-width: 620px) {
+
+  h2 {
+    font-size: 18px;
+  }
+
+  .main {
+    padding: 20px;
+  }
+  .form-container {
+    padding: 0;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+  }
+
+  .form-container input, .form-container select, .form-container button {
+    width: 100%;
+    margin: 5px auto;
+    box-sizing: border-box;
+  }
+  .form-container select {
+    background-position: 97% center;
+  }
+  .main p {
+    width: 95%;
+    margin: 0 auto;
+    display: block;
+  }
+}
+
+
+
+
+
+
+
+
+
+

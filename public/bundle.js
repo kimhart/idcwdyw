@@ -27373,6 +27373,10 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
+	var _reactDom = __webpack_require__(/*! react-dom */ 32);
+	
+	var _reactDom2 = _interopRequireDefault(_reactDom);
+	
 	var _Explainer = __webpack_require__(/*! ./Explainer */ 237);
 	
 	var _Explainer2 = _interopRequireDefault(_Explainer);
@@ -27398,8 +27402,7 @@
 	    var _this = _possibleConstructorReturn(this, (MainPage.__proto__ || Object.getPrototypeOf(MainPage)).call(this, props));
 	
 	    _this.handleChange = function (option) {
-	      console.log(option);
-	      if (option === "Error") {
+	      if (option === "error") {
 	        _this.setState({
 	          location: {},
 	          error: "Either that address is wrong, or you're currently in a wasteland."
@@ -27418,6 +27421,12 @@
 	        return _react2.default.createElement(
 	          'li',
 	          { key: index },
+	          _react2.default.createElement(
+	            'i',
+	            { className: 'material-icons' },
+	            'check_circle'
+	          ),
+	          ' ',
 	          category.title
 	        );
 	      }) : null;
@@ -27432,37 +27441,97 @@
 	  }
 	
 	  _createClass(MainPage, [{
+	    key: 'componentDidUpdate',
+	    value: function componentDidUpdate() {
+	      this.refs.display.scrollIntoView();
+	    }
+	  }, {
 	    key: 'render',
 	    value: function render() {
 	      var location = this.state.location;
 	      var error = this.state.error;
+	      console.log(location);
 	      return _react2.default.createElement(
 	        'div',
-	        { className: 'main' },
-	        _react2.default.createElement(_Explainer2.default, null),
-	        _react2.default.createElement(_AddressForm2.default, { updateLocation: this.handleChange }),
-	        error && _react2.default.createElement(
-	          'p',
-	          { className: 'error' },
-	          this.state.error
-	        ),
-	        location.id && _react2.default.createElement(
+	        { className: 'wrap' },
+	        _react2.default.createElement(
 	          'div',
-	          { className: 'display' },
+	          { className: 'logo' },
 	          _react2.default.createElement(
-	            'h2',
+	            'h1',
 	            null,
-	            'Congratulations, you\'re going to:'
+	            'IDCWDYW',
+	            _react2.default.createElement(
+	              'span',
+	              { className: 'question' },
+	              '?'
+	            )
+	          )
+	        ),
+	        _react2.default.createElement(_Explainer2.default, null),
+	        _react2.default.createElement(
+	          'div',
+	          { className: 'main' },
+	          _react2.default.createElement(
+	            'p',
+	            null,
+	            'Pressure\'s off. This randomly picks one open restaurant within 2 miles of you, so you don\'t have to use your brain AT ALL \uD83D\uDE0F'
 	          ),
-	          _react2.default.createElement(
-	            'h3',
-	            null,
-	            location.name
+	          _react2.default.createElement(_AddressForm2.default, { updateLocation: this.handleChange }),
+	          error && _react2.default.createElement(
+	            'p',
+	            { className: 'error' },
+	            this.state.error
 	          ),
-	          _react2.default.createElement(
-	            'ul',
-	            null,
-	            this.getCategories()
+	          location.id && _react2.default.createElement(
+	            'div',
+	            { className: 'display', ref: 'display' },
+	            _react2.default.createElement(
+	              'h3',
+	              { className: 'congrats' },
+	              'Congratulations, you\'re going to:'
+	            ),
+	            _react2.default.createElement(
+	              'h3',
+	              { className: 'name' },
+	              _react2.default.createElement(
+	                'a',
+	                { target: '_blank', href: location.url },
+	                location.name
+	              )
+	            ),
+	            _react2.default.createElement(
+	              'p',
+	              { className: 'address' },
+	              location.location.display_address[0],
+	              ', ',
+	              location.location.display_address[1],
+	              _react2.default.createElement('br', null),
+	              location.location.display_address[2]
+	            ),
+	            _react2.default.createElement(
+	              'ul',
+	              { className: 'categories' },
+	              this.getCategories()
+	            ),
+	            _react2.default.createElement(
+	              'div',
+	              { className: 'columns' },
+	              _react2.default.createElement(
+	                'div',
+	                { className: 'left' },
+	                _react2.default.createElement('img', { className: 'restaurant-photo', src: location.image_url, alt: location.name })
+	              ),
+	              _react2.default.createElement(
+	                'div',
+	                { className: 'right' },
+	                _react2.default.createElement(
+	                  'p',
+	                  null,
+	                  'Google map'
+	                )
+	              )
+	            )
 	          )
 	        )
 	      );
@@ -27585,38 +27654,20 @@
 	        "div",
 	        { className: "explainer" },
 	        _react2.default.createElement(
-	          "h1",
+	          "h2",
 	          null,
 	          "Are you indecisive af? ",
 	          _react2.default.createElement("br", null),
-	          "Did someone just ask you where you want to eat?",
-	          _react2.default.createElement("br", null),
-	          "Did you say",
+	          "When asked to pick food, do you say:",
 	          _react2.default.createElement("br", null),
 	          _react2.default.createElement(
 	            "span",
-	            null,
+	            { className: "emphasis" },
 	            "\"I don't care, what do you want?\"\u2122"
 	          ),
 	          _react2.default.createElement("br", null),
-	          "Is your significant other tired of your shit? ",
+	          "Is your friend/significant other tired of your shit? ",
 	          _react2.default.createElement("br", null)
-	        ),
-	        _react2.default.createElement(
-	          "h2",
-	          null,
-	          "Chill. This picks a random restaurant within a 1 mile radius of your location, so you don't have to use your brain AT ALL \uD83C\uDF08"
-	        ),
-	        _react2.default.createElement(
-	          "p",
-	          null,
-	          "PS this app is only for the truly lazy. If you want filters and options and all that jazz, go hangout on ",
-	          _react2.default.createElement(
-	            "a",
-	            { href: "https://yelp.com" },
-	            "Yelp"
-	          ),
-	          "."
 	        )
 	      );
 	    }
@@ -27974,7 +28025,7 @@
 	              'WY'
 	            )
 	          ),
-	          _react2.default.createElement('input', { type: 'submit', value: 'GO!' })
+	          _react2.default.createElement('input', { type: 'submit', value: 'GO' })
 	        )
 	      );
 	    }

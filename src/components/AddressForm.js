@@ -88,7 +88,7 @@ class AddressForm extends React.Component {
             <option value="WI">WI</option>
             <option value="WY">WY</option>
           </select>
-          <input type="submit" value="GO!" />
+          <input type="submit" value="GO" />
         </form>
       </div>
     )
