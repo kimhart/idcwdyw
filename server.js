@@ -9,6 +9,7 @@ const app = express();
 const token = process.env.YELP_ACCESS_TOKEN;
 const client = yelp.client(token);
 const port = process.env.port || 3000;
+const google = process.env.IDCWDYW_GOOGLE_MAPS_KEY;
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());

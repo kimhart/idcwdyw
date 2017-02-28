@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css?family=Poppins:300,400,600');
 
-body {
+body, html {
   background: #EAEAEA;
   font-family: 'Poppins', 'Arial', sans-serif;
   font-weight: 300;
@@ -60,7 +60,7 @@ h2 {
   background-color: #EAEAEA;
   margin: 0 auto;
   width: 100%;
-  padding: 30px 10px;
+  padding: 50px 10px;
   flex-direction: column;
   flex-grow: 1;
 }
@@ -81,7 +81,7 @@ h2 {
   display: flex;
   justify-content: space-around;
   flex-direction: row;
-  margin: 20px auto;
+  margin: 20px auto 40px auto;
   width: 100%;
 }
 
@@ -130,14 +130,26 @@ h2 {
   color: #FFF;
   border: 0;
   padding: 10px 20px;
+  cursor: pointer;
 }
 
+.display {
+  box-sizing: border-box;
+  width: 95%;
+  margin: 20px auto;
+  padding: 30px;
+  display: block;
+  background: #FFF;
+  border-radius: 5px;
+  border: 1px solid #CDCDCD;
+  box-shadow: 3px 3px #CDCDCD;
+}
 
 h3.congrats {
   text-align: center;
   padding-bottom: 0;
   color: #414141;
-  margin: 30px auto 0 auto;
+  margin: 0 auto;
   font-weight: 400;
 }
 
@@ -178,6 +190,10 @@ h3.congrats {
 .columns {
   display: flex;
   flex-direction: row;
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+  justify-content: center;
 }
 
 .left, .right {
@@ -186,11 +202,18 @@ h3.congrats {
   padding: 10px;
 }
 
-img.restaurant-photo {
+
+.restaurant-photo {
   width: 100%;
+  border-radius: 3px;
+  min-height: 400px;
 }
 
-
+.map {
+  height: 100%;
+  width: 100%;
+  border-radius: 3px;
+}
 
 
 

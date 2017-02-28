@@ -1,5 +1,4 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import Explainer from './Explainer';
 import AddressForm from './AddressForm';
 
@@ -8,10 +7,31 @@ class MainPage extends React.Component {
   constructor(props) {
     super(props);
     this.getCategories = this.getCategories.bind(this);
+    this.getRestaurantImage = this.getRestaurantImage.bind(this);
     this.state = {
       location: {},
       error: null
     }
+  }
+
+  componentDidUpdate() {
+    this.refs.display.scrollIntoViewIfNeeded({behavior: "smooth"});
+
+    let latLng = {
+      lat: this.state.location.coordinates.latitude,
+      lng: this.state.location.coordinates.longitude
+    }
+
+    let map = new google.maps.Map(this.refs.map, {
+      center: latLng,
+      zoom: 16
+    });
+
+    let marker = new google.maps.Marker({
+      position: latLng,
+      map: map,
+      title: this.state.location.name
+    });
   }
 
   handleChange = (option) => {
@@ -33,13 +53,20 @@ class MainPage extends React.Component {
     return categories ? categories.map((category, index) => <li key={index}><i className="material-icons">check_circle</i> {category.title}</li>) : null;
   }
 
-  componentDidUpdate() {
-    this.refs.display.scrollIntoView();
+
+  getRestaurantImage = () => {
+    let src = this.state.location.image_url;
+    let style = { 
+      background: `url('${src}') center center`,
+      backgroundSize: 'cover'
+    }
+    return <div className="restaurant-photo" style={style}></div>
   }
 
   render() {
     let location = this.state.location;
     let error = this.state.error;
+
     console.log(location);
     return (
       <div className="wrap">
@@ -62,10 +89,10 @@ class MainPage extends React.Component {
             <ul className="categories">{this.getCategories()}</ul>
             <div className="columns">
               <div className="left">
-                <img className="restaurant-photo" src={location.image_url} alt={location.name}/>
+                {this.getRestaurantImage()}
               </div>
               <div className="right">
-                <p>Google map</p>
+                <div className="map" ref="map"></div>
               </div>
             </div>
           </div>

@@ -27373,10 +27373,6 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _reactDom = __webpack_require__(/*! react-dom */ 32);
-	
-	var _reactDom2 = _interopRequireDefault(_reactDom);
-	
 	var _Explainer = __webpack_require__(/*! ./Explainer */ 237);
 	
 	var _Explainer2 = _interopRequireDefault(_Explainer);
@@ -27432,7 +27428,17 @@
 	      }) : null;
 	    };
 	
+	    _this.getRestaurantImage = function () {
+	      var src = _this.state.location.image_url;
+	      var style = {
+	        background: 'url(\'' + src + '\') center center',
+	        backgroundSize: 'cover'
+	      };
+	      return _react2.default.createElement('div', { className: 'restaurant-photo', style: style });
+	    };
+	
 	    _this.getCategories = _this.getCategories.bind(_this);
+	    _this.getRestaurantImage = _this.getRestaurantImage.bind(_this);
 	    _this.state = {
 	      location: {},
 	      error: null
@@ -27443,13 +27449,30 @@
 	  _createClass(MainPage, [{
 	    key: 'componentDidUpdate',
 	    value: function componentDidUpdate() {
-	      this.refs.display.scrollIntoView();
+	      this.refs.display.scrollIntoViewIfNeeded({ behavior: "smooth" });
+	
+	      var latLng = {
+	        lat: this.state.location.coordinates.latitude,
+	        lng: this.state.location.coordinates.longitude
+	      };
+	
+	      var map = new google.maps.Map(this.refs.map, {
+	        center: latLng,
+	        zoom: 16
+	      });
+	
+	      var marker = new google.maps.Marker({
+	        position: latLng,
+	        map: map,
+	        title: this.state.location.name
+	      });
 	    }
 	  }, {
 	    key: 'render',
 	    value: function render() {
 	      var location = this.state.location;
 	      var error = this.state.error;
+	
 	      console.log(location);
 	      return _react2.default.createElement(
 	        'div',
@@ -27520,16 +27543,12 @@
 	              _react2.default.createElement(
 	                'div',
 	                { className: 'left' },
-	                _react2.default.createElement('img', { className: 'restaurant-photo', src: location.image_url, alt: location.name })
+	                this.getRestaurantImage()
 	              ),
 	              _react2.default.createElement(
 	                'div',
 	                { className: 'right' },
-	                _react2.default.createElement(
-	                  'p',
-	                  null,
-	                  'Google map'
-	                )
+	                _react2.default.createElement('div', { className: 'map', ref: 'map' })
 	              )
 	            )
 	          )
