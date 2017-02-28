@@ -1,9 +1,15 @@
 # IDCWDYW?
 ### (I don't care, what do you want?)
-Shoutout to all the lazy people out there! This chooses a restaurant within 2 miles of you, so you can keep being apathetic without annoying everyone else.
+This one goes out to the lazy people. IDCWDYW chooses a restaurant within 2 miles of you, so you can keep being apathetic without annoying everyone else.
 
-IDCWDYW was built with React, Webpack, Node.js, plain ol' CSS, the Yelp Fusion API, and the Google Maps API.
+### Stack:
+* React / Webpack
+* Node.js
+* Plain ol' CSS
+* Yelp Fusion API
+* Google Maps API
 
------------- | -------------
-![IDCWDYW](IDCWDYW.png) | ![IDCWDYW2](IDCWDYW2.png)
+|Home                       |  Search                  |
+|:-------------------------:|:-------------------------:
+|![IDCWDYW](IDCWDYW.png)    | ![IDCWDYW2](IDCWDYW2.png)|
 
