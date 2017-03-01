@@ -1,6 +1,7 @@
 import React from 'react';
 import Explainer from './Explainer';
 import AddressForm from './AddressForm';
+import scrollIntoViewIfNeeded from 'scroll-into-view-if-needed';
 
 class MainPage extends React.Component {
 
@@ -15,6 +16,11 @@ class MainPage extends React.Component {
   }
 
   componentDidUpdate() {
+    // this.refs.display.scrollIntoView({behavior: "smooth"});
+
+    scrollIntoViewIfNeeded(this.refs.display, false, {
+      duration: 150
+    })
 
     let latLng = {
       lat: this.state.location.coordinates.latitude,
@@ -85,8 +91,8 @@ class MainPage extends React.Component {
           <div className="display" ref="display">
             <h3 className="congrats">Congratulations, you're going to:</h3>
             <h3 className="name"><a target="_blank" href={location.url}>{location.name}</a></h3>
-            <p className="address">{location.location.display_address[0]}, {location.location.display_address[1]}<br/>
-              {location.location.display_address[2]}</p>
+            <p className="address"><a target="_blank" href={`http://maps.google.com/maps?ll=${location.coordinates.latitude},${location.coordinates.longitude}`}>{location.location.display_address[0]}, {location.location.display_address[1]}<br/>
+              {location.location.display_address[2]}</a></p>
             <ul className="categories">{this.getCategories()}</ul>
             <div className="columns">
               <div className="left">

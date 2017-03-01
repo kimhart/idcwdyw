@@ -170,7 +170,6 @@ h3.congrats {
 
 .name a, .name a:hover, .name a:active, .name a:visited {
   text-decoration: none;
-  color: #4D4D4D;
   color: #F46235;
 }
 
@@ -181,6 +180,11 @@ h3.congrats {
   width: 100%;
   padding-left: 0;
   margin-top: 0 auto 30px auto;
+}
+
+p.address a, p.address a:hover, p.address a:active, p.address a:visited {
+  text-decoration: none;
+  color: #414141;
 }
 
 .categories li {
