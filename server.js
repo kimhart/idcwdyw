@@ -8,14 +8,14 @@ import yelp from 'yelp-fusion';
 const app = express();
 const token = process.env.YELP_ACCESS_TOKEN;
 const client = yelp.client(token);
-const port = process.env.port || 3000;
+const port = process.env.PORT || 3000;
 const google = process.env.IDCWDYW_GOOGLE_MAPS_KEY;
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use('/', express.static('public'));
 
-app.get('/', function (req, res) {
+app.get('*', function (req, res) {
   res.sendFile(path.resolve(__dirname, 'public', 'index.html'))
 })
 
@@ -39,4 +39,4 @@ app.post('/api/search', function(req ,res) {
   });
 })
 
-app.listen(port, () => console.log('Listening on port', port));
+app.listen(port);
