@@ -10,5 +10,6 @@ This one goes out to the lazy people — IDCWDYW chooses a restaurant within 2 m
 * Yelp Fusion API
 * Google Maps API
 
-![IDCWDYW](IDCWDYW.png =800x)
-![IDCWDYW2](IDCWDYW2.png =800x)
+<img src="IDCWDYW.png" alt="IDCWDYW" width="800px" height="auto">
+<img src="IDCWDYW2.png" alt="IDCWDYW2" width="800px" height="auto">
+
