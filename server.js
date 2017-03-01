@@ -8,7 +8,6 @@ import yelp from 'yelp-fusion';
 const app = express();
 const token = process.env.YELP_ACCESS_TOKEN;
 const client = yelp.client(token);
-const port = process.env.port || 3000;
 const google = process.env.IDCWDYW_GOOGLE_MAPS_KEY;
 
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -39,4 +38,7 @@ app.post('/api/search', function(req ,res) {
   });
 })
 
-app.listen(port, () => console.log('Listening on port', port));
+app.listen(process.env.PORT || 3000, function(){
+  console.log('Listening on port', this.address().port);
+});
+
