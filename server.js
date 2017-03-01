@@ -6,6 +6,7 @@ const path = require('path');
 const bodyParser = require('body-parser');
 const request = require('request');
 const yelp = require('yelp-fusion');
+const favicon = require('serve-favicon');
 const app = express();
 const token = process.env.YELP_ACCESS_TOKEN;
 const client = yelp.client(token);
@@ -15,6 +16,7 @@ const google = process.env.IDCWDYW_GOOGLE_MAPS_KEY;
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use('/', express.static('public'));
+app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 
 app.get('*', function (req, res) {
   res.sendFile(path.resolve(__dirname, 'public', 'index.html'))
