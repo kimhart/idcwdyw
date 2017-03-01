@@ -1,10 +1,9 @@
-import fs from 'fs';
-import express from 'express';
-import path from 'path';
-import bodyParser from 'body-parser';
-import request from 'request';
-import yelp from 'yelp-fusion';
-
+const fs = require('fs');
+const express = require('express');
+const path = require('path');
+const bodyParser = require('body-parser');
+const request = require('request');
+const yelp = require('yelp');
 const app = express();
 const token = process.env.YELP_ACCESS_TOKEN;
 const client = yelp.client(token);
