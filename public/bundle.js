@@ -27453,12 +27453,6 @@
 	  _createClass(MainPage, [{
 	    key: 'componentDidUpdate',
 	    value: function componentDidUpdate() {
-	      // this.refs.display.scrollIntoView({behavior: "smooth"});
-	
-	      (0, _scrollIntoViewIfNeeded2.default)(this.refs.display, false, {
-	        duration: 150
-	      });
-	
 	      var latLng = {
 	        lat: this.state.location.coordinates.latitude,
 	        lng: this.state.location.coordinates.longitude
@@ -27476,14 +27470,16 @@
 	      });
 	
 	      marker.setMap(map);
+	
+	      (0, _scrollIntoViewIfNeeded2.default)(this.refs.display, false, {
+	        duration: 130
+	      });
 	    }
 	  }, {
 	    key: 'render',
 	    value: function render() {
 	      var location = this.state.location;
 	      var error = this.state.error;
-	
-	      console.log(location);
 	      return _react2.default.createElement(
 	        'div',
 	        { className: 'wrap' },

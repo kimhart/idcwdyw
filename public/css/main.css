@@ -20,6 +20,15 @@ h1 {
   margin: 0;
 }
 
+.not-found {
+  color: #F46235;
+}
+
+.not-found a, .not-found a:hover, .not-found a:active, .not-found a:visited {
+  text-decoration: none;
+  color: #F46235
+}
+
 h2 {
   color: #414141;
   margin: 0 auto;
@@ -142,8 +151,8 @@ h2 {
 
 .display {
   box-sizing: border-box;
-  width: 80%;
-  max-width: 940px;
+  width: 90%;
+  max-width: 920px;
   margin: 20px auto;
   padding: 30px;
   display: block;

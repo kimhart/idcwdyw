@@ -16,16 +16,10 @@ class MainPage extends React.Component {
   }
 
   componentDidUpdate() {
-    // this.refs.display.scrollIntoView({behavior: "smooth"});
-
-    scrollIntoViewIfNeeded(this.refs.display, false, {
-      duration: 150
-    })
-
     let latLng = {
       lat: this.state.location.coordinates.latitude,
       lng: this.state.location.coordinates.longitude
-    }
+    };
 
     let map = new google.maps.Map(this.refs.map, {
       center: latLng,
@@ -37,8 +31,12 @@ class MainPage extends React.Component {
       title: this.state.location.name,
       animation: google.maps.Animation.DROP
     });
-
+    
     marker.setMap(map);
+
+    scrollIntoViewIfNeeded(this.refs.display, false, {
+      duration: 130
+    })
   }
 
   handleChange = (option) => {
@@ -73,8 +71,6 @@ class MainPage extends React.Component {
   render() {
     let location = this.state.location;
     let error = this.state.error;
-
-    console.log(location);
     return (
       <div className="wrap">
         <div className="logo">
