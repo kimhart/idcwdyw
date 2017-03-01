@@ -89,7 +89,6 @@ h2 {
 .form-container {
   display: flex;
   justify-content: space-around;
-  flex-direction: row;
   margin: 20px auto 40px auto;
   width: 100%;
 }
@@ -132,6 +131,23 @@ h2 {
 
 .form-container select option {
   color: #4D4D4D;
+}
+
+.form-section {
+  display: block;
+  font-size: 14px;
+  margin: 10px auto 0 auto;
+}
+
+.topic-label {
+  font-weight: 600;
+  font-size: 14px;
+  padding: 5px;
+}
+
+.form-section label {
+  display: inline-flex;
+  margin: 0 5px 0 0;
 }
 
 .form-container input[type=submit] {
@@ -235,6 +251,7 @@ p.address a, p.address a:hover, p.address a:active, p.address a:visited {
   width: 100%;
   border-radius: 3px;
 }
+
 
 
 

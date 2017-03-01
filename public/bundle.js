@@ -27678,10 +27678,31 @@
 	      _this2.setState = { value: event.target.value };
 	    };
 	
+	    _this2.handlePrice = function () {
+	      var priceOptions = [_this2.refs.price1, _this2.refs.price2, _this2.refs.price3, _this2.refs.price4];
+	      var priceChosen = [];
+	      for (var i = 0; i < priceOptions.length; i++) {
+	        if (priceOptions[i].checked) {
+	          priceChosen.push(priceOptions[i].value);
+	        } else {
+	          if (priceChosen.includes(priceOptions[i])) {
+	            var index = priceChosen.indexOf(priceOptions[i]);
+	            priceChosen.splice(index, 1);
+	          }
+	        }
+	        priceChosen.sort();
+	      }
+	      var finalPrices = priceChosen.join();
+	      return finalPrices;
+	    };
+	
 	    _this2.getLocation = function (e) {
 	      e.preventDefault();
+	      var price = _this2.handlePrice();
 	      var _this = _this2;
-	      var data = $('.address-form').serialize();
+	      var address = $('.address-form').serialize();
+	      var data = address + '&price=' + price;
+	      console.log(data);
 	      $.ajax({
 	        url: '/api/search',
 	        type: 'post',
@@ -27693,6 +27714,8 @@
 	    };
 	
 	    _this2.handleStatePicker = _this2.handleStatePicker.bind(_this2);
+	    _this2.getLocation = _this2.getLocation.bind(_this2);
+	    _this2.handlePrice = _this2.handlePrice.bind(_this2);
 	    _this2.state = {
 	      value: 'state'
 	    };
@@ -27714,279 +27737,316 @@
 	            }, className: 'address-form', onSubmit: function onSubmit(e) {
 	              return _this3.getLocation(e);
 	            } },
-	          _react2.default.createElement('input', { required: true, name: 'address', ref: function ref(input) {
-	              return _this3.address = input;
-	            }, type: 'text', placeholder: 'Address' }),
-	          _react2.default.createElement('input', { required: true, name: 'city', ref: function ref(input) {
-	              return _this3.city = input;
-	            }, type: 'text', placeholder: 'City' }),
 	          _react2.default.createElement(
-	            'select',
-	            { required: true, name: 'state', ref: function ref(input) {
-	                return _this3.shortState = input;
-	              }, defaultValue: this.state.value, onChange: this.handleStatePicker },
+	            'div',
+	            { className: 'form-section' },
 	            _react2.default.createElement(
-	              'option',
-	              { disabled: true, value: 'state' },
-	              'State'
+	              'span',
+	              { className: 'topic-label' },
+	              'Price Range:'
 	            ),
+	            _react2.default.createElement('input', { defaultChecked: true, id: 'check1', type: 'checkbox', value: 1, ref: 'price1', className: 'price-check' }),
 	            _react2.default.createElement(
-	              'option',
-	              { value: 'AL' },
-	              'AL'
+	              'label',
+	              { htmlFor: 'check1' },
+	              '$'
 	            ),
+	            _react2.default.createElement('input', { defaultChecked: true, id: 'check2', type: 'checkbox', value: 2, ref: 'price2', className: 'price-check' }),
 	            _react2.default.createElement(
-	              'option',
-	              { value: 'AK' },
-	              'AK'
+	              'label',
+	              { htmlFor: 'check2' },
+	              '$$'
 	            ),
+	            _react2.default.createElement('input', { defaultChecked: true, id: 'check3', type: 'checkbox', value: 3, ref: 'price3', className: 'price-check' }),
 	            _react2.default.createElement(
-	              'option',
-	              { value: 'AZ' },
-	              'AZ'
+	              'label',
+	              { htmlFor: 'check3' },
+	              '$$$'
 	            ),
+	            _react2.default.createElement('input', { defaultChecked: true, id: 'check4', type: 'checkbox', value: 4, ref: 'price4', className: 'price-check' }),
 	            _react2.default.createElement(
-	              'option',
-	              { value: 'AR' },
-	              'AR'
-	            ),
-	            _react2.default.createElement(
-	              'option',
-	              { value: 'CA' },
-	              'CA'
-	            ),
-	            _react2.default.createElement(
-	              'option',
-	              { value: 'CO' },
-	              'CO'
-	            ),
-	            _react2.default.createElement(
-	              'option',
-	              { value: 'CT' },
-	              'CT'
-	            ),
-	            _react2.default.createElement(
-	              'option',
-	              { value: 'DE' },
-	              'DE'
-	            ),
-	            _react2.default.createElement(
-	              'option',
-	              { value: 'DC' },
-	              'DC'
-	            ),
-	            _react2.default.createElement(
-	              'option',
-	              { value: 'FL' },
-	              'FL'
-	            ),
-	            _react2.default.createElement(
-	              'option',
-	              { value: 'GA' },
-	              'GA'
-	            ),
-	            _react2.default.createElement(
-	              'option',
-	              { value: 'HI' },
-	              'HI'
-	            ),
-	            _react2.default.createElement(
-	              'option',
-	              { value: 'ID' },
-	              'ID'
-	            ),
-	            _react2.default.createElement(
-	              'option',
-	              { value: 'IL' },
-	              'IL'
-	            ),
-	            _react2.default.createElement(
-	              'option',
-	              { value: 'IN' },
-	              'IN'
-	            ),
-	            _react2.default.createElement(
-	              'option',
-	              { value: 'IA' },
-	              'IA'
-	            ),
-	            _react2.default.createElement(
-	              'option',
-	              { value: 'KS' },
-	              'KS'
-	            ),
-	            _react2.default.createElement(
-	              'option',
-	              { value: 'KY' },
-	              'KY'
-	            ),
-	            _react2.default.createElement(
-	              'option',
-	              { value: 'LA' },
-	              'LA'
-	            ),
-	            _react2.default.createElement(
-	              'option',
-	              { value: 'ME' },
-	              'ME'
-	            ),
-	            _react2.default.createElement(
-	              'option',
-	              { value: 'MD' },
-	              'MD'
-	            ),
-	            _react2.default.createElement(
-	              'option',
-	              { value: 'MA' },
-	              'MA'
-	            ),
-	            _react2.default.createElement(
-	              'option',
-	              { value: 'MI' },
-	              'MI'
-	            ),
-	            _react2.default.createElement(
-	              'option',
-	              { value: 'MN' },
-	              'MN'
-	            ),
-	            _react2.default.createElement(
-	              'option',
-	              { value: 'MS' },
-	              'MS'
-	            ),
-	            _react2.default.createElement(
-	              'option',
-	              { value: 'MO' },
-	              'MO'
-	            ),
-	            _react2.default.createElement(
-	              'option',
-	              { value: 'MT' },
-	              'MT'
-	            ),
-	            _react2.default.createElement(
-	              'option',
-	              { value: 'NE' },
-	              'NE'
-	            ),
-	            _react2.default.createElement(
-	              'option',
-	              { value: 'NV' },
-	              'NV'
-	            ),
-	            _react2.default.createElement(
-	              'option',
-	              { value: 'NH' },
-	              'NH'
-	            ),
-	            _react2.default.createElement(
-	              'option',
-	              { value: 'NJ' },
-	              'NJ'
-	            ),
-	            _react2.default.createElement(
-	              'option',
-	              { value: 'NM' },
-	              'NM'
-	            ),
-	            _react2.default.createElement(
-	              'option',
-	              { value: 'NY' },
-	              'NY'
-	            ),
-	            _react2.default.createElement(
-	              'option',
-	              { value: 'NC' },
-	              'NC'
-	            ),
-	            _react2.default.createElement(
-	              'option',
-	              { value: 'ND' },
-	              'ND'
-	            ),
-	            _react2.default.createElement(
-	              'option',
-	              { value: 'OH' },
-	              'OH'
-	            ),
-	            _react2.default.createElement(
-	              'option',
-	              { value: 'OK' },
-	              'OK'
-	            ),
-	            _react2.default.createElement(
-	              'option',
-	              { value: 'OR' },
-	              'OR'
-	            ),
-	            _react2.default.createElement(
-	              'option',
-	              { value: 'PA' },
-	              'PA'
-	            ),
-	            _react2.default.createElement(
-	              'option',
-	              { value: 'RI' },
-	              'RI'
-	            ),
-	            _react2.default.createElement(
-	              'option',
-	              { value: 'SC' },
-	              'SC'
-	            ),
-	            _react2.default.createElement(
-	              'option',
-	              { value: 'SD' },
-	              'SD'
-	            ),
-	            _react2.default.createElement(
-	              'option',
-	              { value: 'TN' },
-	              'TN'
-	            ),
-	            _react2.default.createElement(
-	              'option',
-	              { value: 'TX' },
-	              'TX'
-	            ),
-	            _react2.default.createElement(
-	              'option',
-	              { value: 'UT' },
-	              'UT'
-	            ),
-	            _react2.default.createElement(
-	              'option',
-	              { value: 'VT' },
-	              'VT'
-	            ),
-	            _react2.default.createElement(
-	              'option',
-	              { value: 'VA' },
-	              'VA'
-	            ),
-	            _react2.default.createElement(
-	              'option',
-	              { value: 'WA' },
-	              'WA'
-	            ),
-	            _react2.default.createElement(
-	              'option',
-	              { value: 'WV' },
-	              'WV'
-	            ),
-	            _react2.default.createElement(
-	              'option',
-	              { value: 'WI' },
-	              'WI'
-	            ),
-	            _react2.default.createElement(
-	              'option',
-	              { value: 'WY' },
-	              'WY'
+	              'label',
+	              { htmlFor: 'check4' },
+	              '$$$$'
 	            )
 	          ),
-	          _react2.default.createElement('input', { type: 'submit', value: 'GO' })
+	          _react2.default.createElement(
+	            'div',
+	            { className: 'form-section' },
+	            _react2.default.createElement('input', { required: true, name: 'address', ref: function ref(input) {
+	                return _this3.address = input;
+	              }, type: 'text', placeholder: 'Address' }),
+	            _react2.default.createElement('input', { required: true, name: 'city', ref: function ref(input) {
+	                return _this3.city = input;
+	              }, type: 'text', placeholder: 'City' }),
+	            _react2.default.createElement(
+	              'select',
+	              { required: true, name: 'state', ref: function ref(input) {
+	                  return _this3.shortState = input;
+	                }, defaultValue: this.state.value, onChange: this.handleStatePicker },
+	              _react2.default.createElement(
+	                'option',
+	                { disabled: true, value: 'state' },
+	                'State'
+	              ),
+	              _react2.default.createElement(
+	                'option',
+	                { value: 'AL' },
+	                'AL'
+	              ),
+	              _react2.default.createElement(
+	                'option',
+	                { value: 'AK' },
+	                'AK'
+	              ),
+	              _react2.default.createElement(
+	                'option',
+	                { value: 'AZ' },
+	                'AZ'
+	              ),
+	              _react2.default.createElement(
+	                'option',
+	                { value: 'AR' },
+	                'AR'
+	              ),
+	              _react2.default.createElement(
+	                'option',
+	                { value: 'CA' },
+	                'CA'
+	              ),
+	              _react2.default.createElement(
+	                'option',
+	                { value: 'CO' },
+	                'CO'
+	              ),
+	              _react2.default.createElement(
+	                'option',
+	                { value: 'CT' },
+	                'CT'
+	              ),
+	              _react2.default.createElement(
+	                'option',
+	                { value: 'DE' },
+	                'DE'
+	              ),
+	              _react2.default.createElement(
+	                'option',
+	                { value: 'DC' },
+	                'DC'
+	              ),
+	              _react2.default.createElement(
+	                'option',
+	                { value: 'FL' },
+	                'FL'
+	              ),
+	              _react2.default.createElement(
+	                'option',
+	                { value: 'GA' },
+	                'GA'
+	              ),
+	              _react2.default.createElement(
+	                'option',
+	                { value: 'HI' },
+	                'HI'
+	              ),
+	              _react2.default.createElement(
+	                'option',
+	                { value: 'ID' },
+	                'ID'
+	              ),
+	              _react2.default.createElement(
+	                'option',
+	                { value: 'IL' },
+	                'IL'
+	              ),
+	              _react2.default.createElement(
+	                'option',
+	                { value: 'IN' },
+	                'IN'
+	              ),
+	              _react2.default.createElement(
+	                'option',
+	                { value: 'IA' },
+	                'IA'
+	              ),
+	              _react2.default.createElement(
+	                'option',
+	                { value: 'KS' },
+	                'KS'
+	              ),
+	              _react2.default.createElement(
+	                'option',
+	                { value: 'KY' },
+	                'KY'
+	              ),
+	              _react2.default.createElement(
+	                'option',
+	                { value: 'LA' },
+	                'LA'
+	              ),
+	              _react2.default.createElement(
+	                'option',
+	                { value: 'ME' },
+	                'ME'
+	              ),
+	              _react2.default.createElement(
+	                'option',
+	                { value: 'MD' },
+	                'MD'
+	              ),
+	              _react2.default.createElement(
+	                'option',
+	                { value: 'MA' },
+	                'MA'
+	              ),
+	              _react2.default.createElement(
+	                'option',
+	                { value: 'MI' },
+	                'MI'
+	              ),
+	              _react2.default.createElement(
+	                'option',
+	                { value: 'MN' },
+	                'MN'
+	              ),
+	              _react2.default.createElement(
+	                'option',
+	                { value: 'MS' },
+	                'MS'
+	              ),
+	              _react2.default.createElement(
+	                'option',
+	                { value: 'MO' },
+	                'MO'
+	              ),
+	              _react2.default.createElement(
+	                'option',
+	                { value: 'MT' },
+	                'MT'
+	              ),
+	              _react2.default.createElement(
+	                'option',
+	                { value: 'NE' },
+	                'NE'
+	              ),
+	              _react2.default.createElement(
+	                'option',
+	                { value: 'NV' },
+	                'NV'
+	              ),
+	              _react2.default.createElement(
+	                'option',
+	                { value: 'NH' },
+	                'NH'
+	              ),
+	              _react2.default.createElement(
+	                'option',
+	                { value: 'NJ' },
+	                'NJ'
+	              ),
+	              _react2.default.createElement(
+	                'option',
+	                { value: 'NM' },
+	                'NM'
+	              ),
+	              _react2.default.createElement(
+	                'option',
+	                { value: 'NY' },
+	                'NY'
+	              ),
+	              _react2.default.createElement(
+	                'option',
+	                { value: 'NC' },
+	                'NC'
+	              ),
+	              _react2.default.createElement(
+	                'option',
+	                { value: 'ND' },
+	                'ND'
+	              ),
+	              _react2.default.createElement(
+	                'option',
+	                { value: 'OH' },
+	                'OH'
+	              ),
+	              _react2.default.createElement(
+	                'option',
+	                { value: 'OK' },
+	                'OK'
+	              ),
+	              _react2.default.createElement(
+	                'option',
+	                { value: 'OR' },
+	                'OR'
+	              ),
+	              _react2.default.createElement(
+	                'option',
+	                { value: 'PA' },
+	                'PA'
+	              ),
+	              _react2.default.createElement(
+	                'option',
+	                { value: 'RI' },
+	                'RI'
+	              ),
+	              _react2.default.createElement(
+	                'option',
+	                { value: 'SC' },
+	                'SC'
+	              ),
+	              _react2.default.createElement(
+	                'option',
+	                { value: 'SD' },
+	                'SD'
+	              ),
+	              _react2.default.createElement(
+	                'option',
+	                { value: 'TN' },
+	                'TN'
+	              ),
+	              _react2.default.createElement(
+	                'option',
+	                { value: 'TX' },
+	                'TX'
+	              ),
+	              _react2.default.createElement(
+	                'option',
+	                { value: 'UT' },
+	                'UT'
+	              ),
+	              _react2.default.createElement(
+	                'option',
+	                { value: 'VT' },
+	                'VT'
+	              ),
+	              _react2.default.createElement(
+	                'option',
+	                { value: 'VA' },
+	                'VA'
+	              ),
+	              _react2.default.createElement(
+	                'option',
+	                { value: 'WA' },
+	                'WA'
+	              ),
+	              _react2.default.createElement(
+	                'option',
+	                { value: 'WV' },
+	                'WV'
+	              ),
+	              _react2.default.createElement(
+	                'option',
+	                { value: 'WI' },
+	                'WI'
+	              ),
+	              _react2.default.createElement(
+	                'option',
+	                { value: 'WY' },
+	                'WY'
+	              )
+	            ),
+	            _react2.default.createElement('input', { type: 'submit', value: 'GO' })
+	          )
 	        )
 	      );
 	    }
