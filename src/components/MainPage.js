@@ -28,9 +28,11 @@ class MainPage extends React.Component {
 
     let marker = new google.maps.Marker({
       position: latLng,
-      map: map,
-      title: this.state.location.name
+      title: this.state.location.name,
+      animation: google.maps.Animation.DROP
     });
+
+    marker.setMap(map);
   }
 
   handleChange = (option) => {

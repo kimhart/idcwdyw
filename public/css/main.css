@@ -131,6 +131,8 @@ h2 {
   border: 0;
   padding: 10px 20px;
   cursor: pointer;
+  -webkit-appearance: none;
+  appearance: none;
 }
 
 .error {
