@@ -4,21 +4,18 @@ class AddressForm extends React.Component {
 
   constructor(props) {
     super(props);
-    this.handleStatePicker = this.handleStatePicker.bind(this);
-    this.getLocation = this.getLocation.bind(this);
-    this.handlePrice = this.handlePrice.bind(this);
     this.state = {
-      value: 'state'
+      stateShort: 'state'
     };
   }
 
   handleStatePicker = (e) => {
-    this.setState = {value: event.target.value};
+    this.setState = {stateShort: event.target.value};
   }
 
   handlePrice = () => {
-    let priceOptions = [this.refs.price1, this.refs.price2, this.refs.price3, this.refs.price4];
-    let priceChosen = [];
+    const priceOptions = [this.refs.price1, this.refs.price2, this.refs.price3, this.refs.price4];
+    const priceChosen = [];
     for (let i = 0; i < priceOptions.length; i++) {
       if (priceOptions[i].checked) {
         priceChosen.push(priceOptions[i].value);
@@ -30,16 +27,15 @@ class AddressForm extends React.Component {
       }
       priceChosen.sort();
     }
-    return priceChosen.join();;
+    return priceChosen.join();
   }
 
   getLocation = (e) => {
     e.preventDefault();
-    let price = this.handlePrice();
-    let _this = this;
-    let address = $('.address-form').serialize();
-    let data = `${address}&price=${price}`;
-    console.log(data);  
+    const price = this.handlePrice();
+    const _this = this;
+    const address = $('.address-form').serialize();
+    const data = `${address}&price=${price}`;
     $.ajax({
       url: '/api/search',
       type: 'post',
@@ -53,7 +49,7 @@ class AddressForm extends React.Component {
   render() {
     return (
       <div className="form-container">
-        <form action="/api" method="post" ref={(input) => this.addressForm = input}  className="address-form" onSubmit={(e) => this.getLocation(e)}>
+        <form action="/api/search" method="post" className="address-form" onSubmit={(e) => this.getLocation(e)}>
           <div className="form-row">
             <div className="form-group">
               <span className="topic-label">Price Range:</span>
@@ -64,13 +60,13 @@ class AddressForm extends React.Component {
             </div>
             <div className="form-group">
               <span className="topic-label">Max distance (miles):</span>
-              <input name="radius" defaultValue={1} type="number" id="radius" min="0" max="5" />
+              <input name="radius" defaultValue={1} type="number" id="radius" min="1" max="5" />
             </div>
           </div>
           <div className="form-row">
-            <input required name="address" ref={(input) => this.address = input} type="text" placeholder="Address" />
-            <input required name="city" ref={(input) => this.city = input} type="text" placeholder="City" />
-            <select required name="state" ref={(input) => this.shortState = input} defaultValue={this.state.value} onChange={this.handleStatePicker}>
+            <input required name="address" type="text" placeholder="Address" />
+            <input required name="city" type="text" placeholder="City" />
+            <select required name="state" defaultValue={this.state.stateShort} onChange={this.handleStatePicker}>
             <option disabled value="state">State</option>
             <option value="AL">AL</option>
             <option value="AK">AK</option>

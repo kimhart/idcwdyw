@@ -1,5 +1,5 @@
 import React from 'react';
-import Explainer from './Headline';
+import Headline from './Headline';
 import AddressForm from './AddressForm';
 import scrollIntoViewIfNeeded from 'scroll-into-view-if-needed';
 
@@ -7,8 +7,6 @@ class MainPage extends React.Component {
 
   constructor(props) {
     super(props);
-    this.getCategories = this.getCategories.bind(this);
-    this.getRestaurantImage = this.getRestaurantImage.bind(this);
     this.state = {
       location: {},
       error: null
@@ -16,28 +14,29 @@ class MainPage extends React.Component {
   }
 
   componentDidUpdate() {
+    this.renderMap();
+    scrollIntoViewIfNeeded(this.refs.display, false, {
+      duration: 130
+    })
+  }
+
+  renderMap = () => {
     let latLng = {
       lat: this.state.location.coordinates.latitude,
       lng: this.state.location.coordinates.longitude
     };
-
     let map = new google.maps.Map(this.refs.map, {
       center: latLng,
       zoom: 16
     });
-
     let marker = new google.maps.Marker({
       position: latLng,
       title: this.state.location.name,
       animation: google.maps.Animation.DROP
     });
-    
     marker.setMap(map);
-
-    scrollIntoViewIfNeeded(this.refs.display, false, {
-      duration: 130
-    })
   }
+
 
   handleChange = (option) => {
     if (option === "error") {
@@ -73,12 +72,12 @@ class MainPage extends React.Component {
     let error = this.state.error;
     return (
       <div className="wrap">
-        <div className="logo">
+        <section className="logo">
           <h1>IDCWDYW<span className="question">?</span></h1>
-        </div>
-        <Explainer />
+        </section>
+        <Headline />
         <div className="main">
-          <p>Pressure's off. This randomly picks one open restaurant within 2 miles of you, so you don't have to use your brain AT ALL 😏</p>  
+          <p>Pressure's off. This randomly picks one open restaurant near you, so you don't have to use your brain AT ALL 😏</p>  
           <AddressForm updateLocation={this.handleChange} />
           { error &&
             <p ref="errorMsg" className="error">{this.state.error}</p>
@@ -87,6 +86,7 @@ class MainPage extends React.Component {
           <div className="display" ref="display">
             <h3 className="congrats">Congratulations, you're going to:</h3>
             <h3 className="name"><a target="_blank" href={location.url}>{location.name}</a></h3>
+            <h3 className="price">{location.price}</h3>
             <p className="address"><a target="_blank" href={`http://maps.google.com/maps?ll=${location.coordinates.latitude},${location.coordinates.longitude}`}>{location.location.display_address[0]}, {location.location.display_address[1]}<br/>
               {location.location.display_address[2]}</a></p>
             <ul className="categories">{this.getCategories()}</ul>

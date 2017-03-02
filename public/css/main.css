@@ -208,6 +208,12 @@ h3.congrats {
   margin: 5px;
 }
 
+.price {
+  text-align: center;
+  font-size: 20px;
+  margin: 0;
+}
+
 .name a, .name a:hover, .name a:active, .name a:visited {
   text-decoration: none;
   color: #F46235;

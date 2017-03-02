@@ -27401,6 +27401,23 @@
 	
 	    var _this = _possibleConstructorReturn(this, (MainPage.__proto__ || Object.getPrototypeOf(MainPage)).call(this, props));
 	
+	    _this.renderMap = function () {
+	      var latLng = {
+	        lat: _this.state.location.coordinates.latitude,
+	        lng: _this.state.location.coordinates.longitude
+	      };
+	      var map = new google.maps.Map(_this.refs.map, {
+	        center: latLng,
+	        zoom: 16
+	      });
+	      var marker = new google.maps.Marker({
+	        position: latLng,
+	        title: _this.state.location.name,
+	        animation: google.maps.Animation.DROP
+	      });
+	      marker.setMap(map);
+	    };
+	
 	    _this.handleChange = function (option) {
 	      if (option === "error") {
 	        _this.setState({
@@ -27441,8 +27458,6 @@
 	      return _react2.default.createElement('div', { className: 'restaurant-photo', style: style });
 	    };
 	
-	    _this.getCategories = _this.getCategories.bind(_this);
-	    _this.getRestaurantImage = _this.getRestaurantImage.bind(_this);
 	    _this.state = {
 	      location: {},
 	      error: null
@@ -27453,24 +27468,7 @@
 	  _createClass(MainPage, [{
 	    key: 'componentDidUpdate',
 	    value: function componentDidUpdate() {
-	      var latLng = {
-	        lat: this.state.location.coordinates.latitude,
-	        lng: this.state.location.coordinates.longitude
-	      };
-	
-	      var map = new google.maps.Map(this.refs.map, {
-	        center: latLng,
-	        zoom: 16
-	      });
-	
-	      var marker = new google.maps.Marker({
-	        position: latLng,
-	        title: this.state.location.name,
-	        animation: google.maps.Animation.DROP
-	      });
-	
-	      marker.setMap(map);
-	
+	      this.renderMap();
 	      (0, _scrollIntoViewIfNeeded2.default)(this.refs.display, false, {
 	        duration: 130
 	      });
@@ -27484,7 +27482,7 @@
 	        'div',
 	        { className: 'wrap' },
 	        _react2.default.createElement(
-	          'div',
+	          'section',
 	          { className: 'logo' },
 	          _react2.default.createElement(
 	            'h1',
@@ -27504,7 +27502,7 @@
 	          _react2.default.createElement(
 	            'p',
 	            null,
-	            'Pressure\'s off. This randomly picks one open restaurant within 2 miles of you, so you don\'t have to use your brain AT ALL \uD83D\uDE0F'
+	            'Pressure\'s off. This randomly picks one open restaurant near you, so you don\'t have to use your brain AT ALL \uD83D\uDE0F'
 	          ),
 	          _react2.default.createElement(_AddressForm2.default, { updateLocation: this.handleChange }),
 	          error && _react2.default.createElement(
@@ -27528,6 +27526,11 @@
 	                { target: '_blank', href: location.url },
 	                location.name
 	              )
+	            ),
+	            _react2.default.createElement(
+	              'h3',
+	              { className: 'price' },
+	              location.price
 	            ),
 	            _react2.default.createElement(
 	              'p',
@@ -27612,7 +27615,7 @@
 	    key: "render",
 	    value: function render() {
 	      return _react2.default.createElement(
-	        "div",
+	        "section",
 	        { className: "headline" },
 	        _react2.default.createElement(
 	          "h2",
@@ -27675,7 +27678,7 @@
 	    var _this2 = _possibleConstructorReturn(this, (AddressForm.__proto__ || Object.getPrototypeOf(AddressForm)).call(this, props));
 	
 	    _this2.handleStatePicker = function (e) {
-	      _this2.setState = { value: event.target.value };
+	      _this2.setState = { stateShort: event.target.value };
 	    };
 	
 	    _this2.handlePrice = function () {
@@ -27692,7 +27695,7 @@
 	        }
 	        priceChosen.sort();
 	      }
-	      return priceChosen.join();;
+	      return priceChosen.join();
 	    };
 	
 	    _this2.getLocation = function (e) {
@@ -27701,7 +27704,6 @@
 	      var _this = _this2;
 	      var address = $('.address-form').serialize();
 	      var data = address + '&price=' + price;
-	      console.log(data);
 	      $.ajax({
 	        url: '/api/search',
 	        type: 'post',
@@ -27712,11 +27714,8 @@
 	      });
 	    };
 	
-	    _this2.handleStatePicker = _this2.handleStatePicker.bind(_this2);
-	    _this2.getLocation = _this2.getLocation.bind(_this2);
-	    _this2.handlePrice = _this2.handlePrice.bind(_this2);
 	    _this2.state = {
-	      value: 'state'
+	      stateShort: 'state'
 	    };
 	    return _this2;
 	  }
@@ -27731,9 +27730,7 @@
 	        { className: 'form-container' },
 	        _react2.default.createElement(
 	          'form',
-	          { action: '/api', method: 'post', ref: function ref(input) {
-	              return _this3.addressForm = input;
-	            }, className: 'address-form', onSubmit: function onSubmit(e) {
+	          { action: '/api/search', method: 'post', className: 'address-form', onSubmit: function onSubmit(e) {
 	              return _this3.getLocation(e);
 	            } },
 	          _react2.default.createElement(
@@ -27780,23 +27777,17 @@
 	                { className: 'topic-label' },
 	                'Max distance (miles):'
 	              ),
-	              _react2.default.createElement('input', { name: 'radius', defaultValue: 1, type: 'number', id: 'radius', min: '0', max: '5' })
+	              _react2.default.createElement('input', { name: 'radius', defaultValue: 1, type: 'number', id: 'radius', min: '1', max: '5' })
 	            )
 	          ),
 	          _react2.default.createElement(
 	            'div',
 	            { className: 'form-row' },
-	            _react2.default.createElement('input', { required: true, name: 'address', ref: function ref(input) {
-	                return _this3.address = input;
-	              }, type: 'text', placeholder: 'Address' }),
-	            _react2.default.createElement('input', { required: true, name: 'city', ref: function ref(input) {
-	                return _this3.city = input;
-	              }, type: 'text', placeholder: 'City' }),
+	            _react2.default.createElement('input', { required: true, name: 'address', type: 'text', placeholder: 'Address' }),
+	            _react2.default.createElement('input', { required: true, name: 'city', type: 'text', placeholder: 'City' }),
 	            _react2.default.createElement(
 	              'select',
-	              { required: true, name: 'state', ref: function ref(input) {
-	                  return _this3.shortState = input;
-	                }, defaultValue: this.state.value, onChange: this.handleStatePicker },
+	              { required: true, name: 'state', defaultValue: this.state.stateShort, onChange: this.handleStatePicker },
 	              _react2.default.createElement(
 	                'option',
 	                { disabled: true, value: 'state' },
