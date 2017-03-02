@@ -27,7 +27,7 @@ app.post('/api/search', function(req ,res) {
   client.search({
     location: `${location.address}, ${location.city}, ${location.state}`,
     categories: 'restaurants',
-    radius: 3218,
+    radius: parseInt(location.radius * 1609.34),
     open_now: true
   }).then(response => {
     if (response.jsonBody.businesses.length === 0) {
@@ -36,6 +36,7 @@ app.post('/api/search', function(req ,res) {
       const options = response.jsonBody.businesses;
       const option = options[Math.floor(Math.random()*options.length)];
       res.send(option);
+      console.log(option)
     }
   }).catch(e => {
     console.log(e);

@@ -27373,9 +27373,9 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _Explainer = __webpack_require__(/*! ./Explainer */ 236);
+	var _Headline = __webpack_require__(/*! ./Headline */ 236);
 	
-	var _Explainer2 = _interopRequireDefault(_Explainer);
+	var _Headline2 = _interopRequireDefault(_Headline);
 	
 	var _AddressForm = __webpack_require__(/*! ./AddressForm */ 237);
 	
@@ -27405,7 +27405,7 @@
 	      if (option === "error") {
 	        _this.setState({
 	          location: {},
-	          error: "Either that address is wrong, or you're currently in a wasteland."
+	          error: "Either that address is wrong, or you're SOL for restaurants that match those requirements."
 	        });
 	      } else {
 	        _this.setState({
@@ -27497,7 +27497,7 @@
 	            )
 	          )
 	        ),
-	        _react2.default.createElement(_Explainer2.default, null),
+	        _react2.default.createElement(_Headline2.default, null),
 	        _react2.default.createElement(
 	          'div',
 	          { className: 'main' },
@@ -27574,9 +27574,9 @@
 
 /***/ },
 /* 236 */
-/*!*************************************!*\
-  !*** ./src/components/Explainer.js ***!
-  \*************************************/
+/*!************************************!*\
+  !*** ./src/components/Headline.js ***!
+  \************************************/
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -27599,21 +27599,21 @@
 	
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 	
-	var Explainer = function (_React$Component) {
-	  _inherits(Explainer, _React$Component);
+	var Headline = function (_React$Component) {
+	  _inherits(Headline, _React$Component);
 	
-	  function Explainer() {
-	    _classCallCheck(this, Explainer);
+	  function Headline() {
+	    _classCallCheck(this, Headline);
 	
-	    return _possibleConstructorReturn(this, (Explainer.__proto__ || Object.getPrototypeOf(Explainer)).apply(this, arguments));
+	    return _possibleConstructorReturn(this, (Headline.__proto__ || Object.getPrototypeOf(Headline)).apply(this, arguments));
 	  }
 	
-	  _createClass(Explainer, [{
+	  _createClass(Headline, [{
 	    key: "render",
 	    value: function render() {
 	      return _react2.default.createElement(
 	        "div",
-	        { className: "explainer" },
+	        { className: "headline" },
 	        _react2.default.createElement(
 	          "h2",
 	          null,
@@ -27634,10 +27634,10 @@
 	    }
 	  }]);
 	
-	  return Explainer;
+	  return Headline;
 	}(_react2.default.Component);
 	
-	exports.default = Explainer;
+	exports.default = Headline;
 
 /***/ },
 /* 237 */
@@ -27692,8 +27692,7 @@
 	        }
 	        priceChosen.sort();
 	      }
-	      var finalPrices = priceChosen.join();
-	      return finalPrices;
+	      return priceChosen.join();;
 	    };
 	
 	    _this2.getLocation = function (e) {
@@ -27739,40 +27738,54 @@
 	            } },
 	          _react2.default.createElement(
 	            'div',
-	            { className: 'form-section' },
+	            { className: 'form-row' },
 	            _react2.default.createElement(
-	              'span',
-	              { className: 'topic-label' },
-	              'Price Range:'
+	              'div',
+	              { className: 'form-group' },
+	              _react2.default.createElement(
+	                'span',
+	                { className: 'topic-label' },
+	                'Price Range:'
+	              ),
+	              _react2.default.createElement('input', { defaultChecked: true, id: 'check1', type: 'checkbox', value: 1, ref: 'price1', className: 'price-check' }),
+	              _react2.default.createElement(
+	                'label',
+	                { htmlFor: 'check1' },
+	                '$'
+	              ),
+	              _react2.default.createElement('input', { defaultChecked: true, id: 'check2', type: 'checkbox', value: 2, ref: 'price2', className: 'price-check' }),
+	              _react2.default.createElement(
+	                'label',
+	                { htmlFor: 'check2' },
+	                '$$'
+	              ),
+	              _react2.default.createElement('input', { defaultChecked: true, id: 'check3', type: 'checkbox', value: 3, ref: 'price3', className: 'price-check' }),
+	              _react2.default.createElement(
+	                'label',
+	                { htmlFor: 'check3' },
+	                '$$$'
+	              ),
+	              _react2.default.createElement('input', { defaultChecked: true, id: 'check4', type: 'checkbox', value: 4, ref: 'price4', className: 'price-check' }),
+	              _react2.default.createElement(
+	                'label',
+	                { htmlFor: 'check4' },
+	                '$$$$'
+	              )
 	            ),
-	            _react2.default.createElement('input', { defaultChecked: true, id: 'check1', type: 'checkbox', value: 1, ref: 'price1', className: 'price-check' }),
 	            _react2.default.createElement(
-	              'label',
-	              { htmlFor: 'check1' },
-	              '$'
-	            ),
-	            _react2.default.createElement('input', { defaultChecked: true, id: 'check2', type: 'checkbox', value: 2, ref: 'price2', className: 'price-check' }),
-	            _react2.default.createElement(
-	              'label',
-	              { htmlFor: 'check2' },
-	              '$$'
-	            ),
-	            _react2.default.createElement('input', { defaultChecked: true, id: 'check3', type: 'checkbox', value: 3, ref: 'price3', className: 'price-check' }),
-	            _react2.default.createElement(
-	              'label',
-	              { htmlFor: 'check3' },
-	              '$$$'
-	            ),
-	            _react2.default.createElement('input', { defaultChecked: true, id: 'check4', type: 'checkbox', value: 4, ref: 'price4', className: 'price-check' }),
-	            _react2.default.createElement(
-	              'label',
-	              { htmlFor: 'check4' },
-	              '$$$$'
+	              'div',
+	              { className: 'form-group' },
+	              _react2.default.createElement(
+	                'span',
+	                { className: 'topic-label' },
+	                'Max distance (miles):'
+	              ),
+	              _react2.default.createElement('input', { name: 'radius', defaultValue: 1, type: 'number', id: 'radius', min: '0', max: '5' })
 	            )
 	          ),
 	          _react2.default.createElement(
 	            'div',
-	            { className: 'form-section' },
+	            { className: 'form-row' },
 	            _react2.default.createElement('input', { required: true, name: 'address', ref: function ref(input) {
 	                return _this3.address = input;
 	              }, type: 'text', placeholder: 'Address' }),

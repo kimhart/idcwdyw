@@ -1,10 +1,10 @@
 import React from 'react';
 
-class Explainer extends React.Component {
+class Headline extends React.Component {
 
   render() {
     return (
-      <div className="explainer">
+      <div className="headline">
         <h2>Are you indecisive as all hell? <br/>
             When asked to pick food, do you say:<br/>
             <span className="emphasis">"I don't care, what do you want?"&trade;</span><br/>
@@ -15,4 +15,4 @@ class Explainer extends React.Component {
   }
 }
 
-export default Explainer;
+export default Headline;

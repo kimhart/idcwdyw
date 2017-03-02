@@ -1,5 +1,5 @@
 import React from 'react';
-import Explainer from './Explainer';
+import Explainer from './Headline';
 import AddressForm from './AddressForm';
 import scrollIntoViewIfNeeded from 'scroll-into-view-if-needed';
 
@@ -43,7 +43,7 @@ class MainPage extends React.Component {
     if (option === "error") {
       this.setState({
         location: {},
-        error: "Either that address is wrong, or you're currently in a wasteland."
+        error: "Either that address is wrong, or you're SOL for restaurants that match those requirements."
       })
     } else {
       this.setState({

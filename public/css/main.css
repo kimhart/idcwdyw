@@ -57,7 +57,7 @@ h2 {
   padding: 0;
 }
 
-.explainer {
+.headline {
   width: 100%;
   min-width: 100%;
   margin: 0;
@@ -82,20 +82,37 @@ h2 {
   font-size: 16px;
   font-weight: 400;
   text-align: center;
-  width: 60%;
+  width: 70%;
   margin: 0 auto;
 }
 
 .form-container {
-  display: flex;
-  justify-content: space-around;
-  margin: 20px auto 40px auto;
+  display: block;
+  margin: 0 auto;
+  width: 80%;
+}
+
+.address-form {
+  display: block;
   width: 100%;
+  margin: 40px auto 40px auto;
+}
+
+.form-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin: 10px auto;
+}
+
+.form-group {
+  font-size: 14px;
 }
 
 .form-container input {
   margin: 5px;
-  padding: 10px;
+  padding: 10px 30px 10px 10px;
   font-size: 16px;
   border: 1px solid #AAA;
   border-radius: 2px;
@@ -133,21 +150,19 @@ h2 {
   color: #4D4D4D;
 }
 
-.form-section {
-  display: block;
-  font-size: 14px;
-  margin: 10px auto 0 auto;
-}
-
 .topic-label {
   font-weight: 600;
   font-size: 14px;
   padding: 5px;
 }
 
-.form-section label {
-  display: inline-flex;
+.form-row label {
   margin: 0 5px 0 0;
+}
+
+.form-container input[type=number] {
+  width: auto;
+  padding: 5px;
 }
 
 .form-container input[type=submit] {
@@ -269,10 +284,10 @@ p.address a, p.address a:hover, p.address a:active, p.address a:visited {
   .main {
     padding: 10px;
   }
-  .form-container {
+
+  .address-form {
     padding: 0;
     align-items: center;
-    display: flex;
     justify-content: center;
     margin-bottom: 0;
   }
