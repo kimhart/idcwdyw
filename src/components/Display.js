@@ -23,6 +23,7 @@ class Display extends React.Component {
       this.setState({
         location: nextProps.location
       });
+      this.renderMap();
       scrollIntoViewIfNeeded(this.refs.display, false, {
         duration: 130
       });

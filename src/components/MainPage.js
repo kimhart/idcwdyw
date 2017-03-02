@@ -4,6 +4,7 @@ import AddressForm from './AddressForm';
 import Display from './Display';
 
 class MainPage extends React.Component {
+  
   constructor(props) {
     super(props);
     this.state = {

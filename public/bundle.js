@@ -27669,7 +27669,7 @@
 	              { className: 'form-group' },
 	              _react2.default.createElement(
 	                'span',
-	                { className: 'topic-label' },
+	                { className: 'topic-label radius' },
 	                'Max distance (miles):'
 	              ),
 	              _react2.default.createElement('input', { name: 'radius', defaultValue: 1, type: 'number', id: 'radius', min: '1', max: '5' })
@@ -28441,6 +28441,7 @@
 	        this.setState({
 	          location: nextProps.location
 	        });
+	        this.renderMap();
 	        (0, _scrollIntoViewIfNeeded2.default)(this.refs.display, false, {
 	          duration: 130
 	        });

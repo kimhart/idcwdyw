@@ -59,7 +59,7 @@ class AddressForm extends React.Component {
               <input defaultChecked id="check4" type="checkbox" value={4} ref="price4" className="price-check" /><label htmlFor="check4">$$$$</label>
             </div>
             <div className="form-group">
-              <span className="topic-label">Max distance (miles):</span>
+              <span className="topic-label radius">Max distance (miles):</span>
               <input name="radius" defaultValue={1} type="number" id="radius" min="1" max="5" />
             </div>
           </div>

@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css?family=Poppins:300,400,600');
 
 body, html {
-  background: #EAEAEA;
+  background: #F2F2F2;
   font-family: 'Poppins', 'Arial', sans-serif;
   font-weight: 300;
   height: 100vh;
@@ -21,12 +21,12 @@ h1 {
 }
 
 .not-found {
-  color: #F46235;
+  color: #F36849;
 }
 
 .not-found a, .not-found a:hover, .not-found a:active, .not-found a:visited {
   text-decoration: none;
-  color: #F46235
+  color: #F36849
 }
 
 h2 {
@@ -39,17 +39,17 @@ h2 {
 }
 
 .logo {
-  background: #8DC8C9;
+  background: #8BDADB;
   margin: 0;
   padding: 0;
 }
 
 .question {
-  color: #F46235;
+  color: #F36849;
 }
 
 .emphasis {
-  color: #F46235;
+  color: #F36849;
   font-weight: 400;
   width: 100%;
   min-width: 100%;
@@ -66,7 +66,7 @@ h2 {
 
 .main {
   box-sizing: border-box;
-  background-color: #EAEAEA;
+  background-color: #F2F2F2;
   margin: 0 auto;
   width: 100%;
   padding: 50px 10px;
@@ -83,38 +83,41 @@ h2 {
   font-weight: 400;
   text-align: center;
   width: 80%;
-  max-width: 700px;
+  max-width: 450px;
   margin: 0 auto;
 }
 
 .form-container {
   display: block;
   margin: 0 auto;
-  width: 80%;
-  max-width: 700px;
+  width: 50%;
+  max-width: 450px;
 }
 
 .address-form {
   display: block;
   width: 100%;
-  margin: 40px auto 40px auto;
+  margin: 20px auto 40px auto;
 }
 
 .form-row {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  display: block;
   width: 100%;
   margin: 10px auto;
 }
 
 .form-group {
-  font-size: 14px;
+  text-align: center;
+  margin: 20px auto;
+}
+
+.form-group label {
+  margin-right: 20px;
+  font-size: 16px;
 }
 
 .form-container input {
   margin: 5px;
-  flex-grow: 1;
   padding: 10px 30px 10px 10px;
   font-size: 16px;
   border: 1px solid #AAA;
@@ -123,7 +126,7 @@ h2 {
 }
 
 ::-webkit-input-placeholder {
-  color: #868686;;
+  color: #4D4D4D;
 }
 
 .form-container select {
@@ -132,7 +135,7 @@ h2 {
   -webkit-box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1);
   background-color: #FFF;
   background-image: url(http://i62.tinypic.com/15xvbd5.png);
-  background-position: 90% center;
+  background-position: 97% center;
   background-repeat: no-repeat;
   border: 1px solid #AAA;
   font-size: inherit;
@@ -153,29 +156,49 @@ h2 {
   color: #4D4D4D;
 }
 
-.topic-label {
-  font-weight: 600;
-  font-size: 14px;
-  padding: 5px;
-}
-
-.form-row label {
-  margin: 0 5px 0 0;
+.form-container input, .form-container select, .form-container button {
+  width: 100%;
+  display: block;
+  margin: 5px auto;
+  box-sizing: border-box;
 }
 
 .form-container input[type=number] {
+  margin: 5px;
+  display: inline;
   width: auto;
   padding: 5px;
 }
 
+.form-container input[type=checkbox] {
+  display: inline;
+  width: auto;
+  margin: 5px 5px 5px 10px;
+  text-align: center;
+}
+
 .form-container input[type=submit] {
-  background-color: #F46235;
+  background-color: #F36849;
   color: #FFF;
   border: 0;
+  margin-top: 20px;
   padding: 10px 20px;
   cursor: pointer;
   -webkit-appearance: none;
   appearance: none;
+}
+
+.topic-label.radius {
+  display: inline;
+}
+
+.topic-label {
+  display: block;
+  text-align: center;
+  margin-top: 20px;
+  font-weight: 600;
+  font-size: 14px;
+  padding: 5px;
 }
 
 .error {
@@ -219,7 +242,7 @@ h2 {
 
 .name a, .name a:hover, .name a:active, .name a:visited {
   text-decoration: none;
-  color: #F46235;
+  color: #F36849;
 }
 
 .categories {
@@ -243,7 +266,7 @@ p.address a, p.address a:hover, p.address a:active, p.address a:visited {
 }
 
 .material-icons {
-  color: #8DC8C9;
+  color: #8BDADB;
   line-height: 1em;
   vertical-align: middle;
 }
@@ -263,7 +286,6 @@ p.address a, p.address a:hover, p.address a:active, p.address a:visited {
   padding: 10px;
 }
 
-
 .restaurant-photo {
   width: 100%;
   border-radius: 3px;
@@ -277,12 +299,7 @@ p.address a, p.address a:hover, p.address a:active, p.address a:visited {
 }
 
 
-
 @media (max-width: 780px) {
-
-  h2 {
-    padding: 10px;
-  }
 
   h3.congrats {
     font-size: 18px;
@@ -293,21 +310,22 @@ p.address a, p.address a:hover, p.address a:active, p.address a:visited {
     padding: 10px;
   }
 
+  .form-container {
+    display: block;
+    margin: 0 auto;
+    width: 70%;
+  }
+
   .address-form {
+    display: block;
     padding: 0;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 0;
-  }
-
-  .form-container input, .form-container select, .form-container button {
+    margin-top: 20px;
     width: 100%;
-    margin: 5px auto;
-    box-sizing: border-box;
   }
 
-  .form-container select {
-    background-position: 97% center;
+  .form-group label {
+    margin-right: 20px;
+    font-size: 16px;
   }
 
   .main p {
@@ -343,7 +361,15 @@ p.address a, p.address a:hover, p.address a:active, p.address a:visited {
   }
 }
 
-@media (max-width: 400px) {
+@media (max-width: 640px) {
+   .form-container {
+    display: block;
+    margin: 0 auto;
+    width: 90%;
+  }
+}
+
+@media (max-width: 420px) {
 
   h1 {
     padding: 10px;
@@ -388,6 +414,13 @@ p.address a, p.address a:hover, p.address a:active, p.address a:visited {
   .restaurant-photo {
     height: auto;
   }
+
+  .form-container {
+    display: block;
+    margin: 0 auto;
+    width: 100%;
+  }
+
 }
 
 
