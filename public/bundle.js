@@ -27381,9 +27381,9 @@
 	
 	var _AddressForm2 = _interopRequireDefault(_AddressForm);
 	
-	var _scrollIntoViewIfNeeded = __webpack_require__(/*! scroll-into-view-if-needed */ 238);
+	var _Display = __webpack_require__(/*! ./Display */ 240);
 	
-	var _scrollIntoViewIfNeeded2 = _interopRequireDefault(_scrollIntoViewIfNeeded);
+	var _Display2 = _interopRequireDefault(_Display);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -27401,24 +27401,7 @@
 	
 	    var _this = _possibleConstructorReturn(this, (MainPage.__proto__ || Object.getPrototypeOf(MainPage)).call(this, props));
 	
-	    _this.renderMap = function () {
-	      var latLng = {
-	        lat: _this.state.location.coordinates.latitude,
-	        lng: _this.state.location.coordinates.longitude
-	      };
-	      var map = new google.maps.Map(_this.refs.map, {
-	        center: latLng,
-	        zoom: 16
-	      });
-	      var marker = new google.maps.Marker({
-	        position: latLng,
-	        title: _this.state.location.name,
-	        animation: google.maps.Animation.DROP
-	      });
-	      marker.setMap(map);
-	    };
-	
-	    _this.handleChange = function (option) {
+	    _this.handleLocation = function (option) {
 	      if (option === "error") {
 	        _this.setState({
 	          location: {},
@@ -27432,32 +27415,6 @@
 	      }
 	    };
 	
-	    _this.getCategories = function () {
-	      var categories = _this.state.location.categories;
-	      return categories ? categories.map(function (category, index) {
-	        return _react2.default.createElement(
-	          'li',
-	          { key: index },
-	          _react2.default.createElement(
-	            'i',
-	            { className: 'material-icons' },
-	            'check_circle'
-	          ),
-	          ' ',
-	          category.title
-	        );
-	      }) : null;
-	    };
-	
-	    _this.getRestaurantImage = function () {
-	      var src = _this.state.location.image_url;
-	      var style = {
-	        background: 'url(\'' + src + '\') center center',
-	        backgroundSize: 'cover'
-	      };
-	      return _react2.default.createElement('div', { className: 'restaurant-photo', style: style });
-	    };
-	
 	    _this.state = {
 	      location: {},
 	      error: null
@@ -27466,14 +27423,6 @@
 	  }
 	
 	  _createClass(MainPage, [{
-	    key: 'componentDidUpdate',
-	    value: function componentDidUpdate() {
-	      this.renderMap();
-	      (0, _scrollIntoViewIfNeeded2.default)(this.refs.display, false, {
-	        duration: 130
-	      });
-	    }
-	  }, {
 	    key: 'render',
 	    value: function render() {
 	      var location = this.state.location;
@@ -27497,74 +27446,20 @@
 	        ),
 	        _react2.default.createElement(_Headline2.default, null),
 	        _react2.default.createElement(
-	          'div',
+	          'section',
 	          { className: 'main' },
 	          _react2.default.createElement(
 	            'p',
 	            null,
 	            'Pressure\'s off. This randomly picks one open restaurant near you, so you don\'t have to use your brain AT ALL \uD83D\uDE0F'
 	          ),
-	          _react2.default.createElement(_AddressForm2.default, { updateLocation: this.handleChange }),
+	          _react2.default.createElement(_AddressForm2.default, { updateLocation: this.handleLocation }),
 	          error && _react2.default.createElement(
 	            'p',
 	            { ref: 'errorMsg', className: 'error' },
 	            this.state.error
 	          ),
-	          location.id && _react2.default.createElement(
-	            'div',
-	            { className: 'display', ref: 'display' },
-	            _react2.default.createElement(
-	              'h3',
-	              { className: 'congrats' },
-	              'Congratulations, you\'re going to:'
-	            ),
-	            _react2.default.createElement(
-	              'h3',
-	              { className: 'name' },
-	              _react2.default.createElement(
-	                'a',
-	                { target: '_blank', href: location.url },
-	                location.name
-	              )
-	            ),
-	            _react2.default.createElement(
-	              'h3',
-	              { className: 'price' },
-	              location.price
-	            ),
-	            _react2.default.createElement(
-	              'p',
-	              { className: 'address' },
-	              _react2.default.createElement(
-	                'a',
-	                { target: '_blank', href: 'http://maps.google.com/maps?ll=' + location.coordinates.latitude + ',' + location.coordinates.longitude },
-	                location.location.display_address[0],
-	                ', ',
-	                location.location.display_address[1],
-	                _react2.default.createElement('br', null),
-	                location.location.display_address[2]
-	              )
-	            ),
-	            _react2.default.createElement(
-	              'ul',
-	              { className: 'categories' },
-	              this.getCategories()
-	            ),
-	            _react2.default.createElement(
-	              'div',
-	              { className: 'columns' },
-	              _react2.default.createElement(
-	                'div',
-	                { className: 'left' },
-	                this.getRestaurantImage()
-	              ),
-	              _react2.default.createElement(
-	                'div',
-	                { className: 'right' },
-	                _react2.default.createElement('div', { className: 'map', ref: 'map' })
-	              )
-	            )
-	          )
+	          location.id && _react2.default.createElement(_Display2.default, this.state)
 	        )
 	      );
 	    }
@@ -28429,6 +28324,194 @@
 	}(_react2.default.Component);
 	
 	exports.default = NotFound;
+
+/***/ },
+/* 240 */
+/*!***********************************!*\
+  !*** ./src/components/Display.js ***!
+  \***********************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	var _react = __webpack_require__(/*! react */ 1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _scrollIntoViewIfNeeded = __webpack_require__(/*! scroll-into-view-if-needed */ 238);
+	
+	var _scrollIntoViewIfNeeded2 = _interopRequireDefault(_scrollIntoViewIfNeeded);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	var Display = function (_React$Component) {
+	  _inherits(Display, _React$Component);
+	
+	  function Display(props) {
+	    _classCallCheck(this, Display);
+	
+	    var _this = _possibleConstructorReturn(this, (Display.__proto__ || Object.getPrototypeOf(Display)).call(this, props));
+	
+	    _this.handleLocation = function (option) {
+	      if (option === "error") {
+	        _this.setState({
+	          location: {},
+	          error: "Either that address is wrong, or you're SOL for restaurants that match those requirements."
+	        });
+	      } else {
+	        _this.setState({
+	          location: option,
+	          error: null
+	        });
+	      }
+	    };
+	
+	    _this.getCategories = function () {
+	      var categories = _this.state.location.categories;
+	      return categories ? categories.map(function (category, index) {
+	        return _react2.default.createElement(
+	          'li',
+	          { key: index },
+	          _react2.default.createElement(
+	            'i',
+	            { className: 'material-icons' },
+	            'check_circle'
+	          ),
+	          ' ',
+	          category.title
+	        );
+	      }) : null;
+	    };
+	
+	    _this.getRestaurantImage = function () {
+	      var src = _this.state.location.image_url;
+	      var style = {
+	        background: 'url(\'' + src + '\') center center',
+	        backgroundSize: 'cover'
+	      };
+	      return _react2.default.createElement('div', { className: 'restaurant-photo', style: style });
+	    };
+	
+	    _this.renderMap = function () {
+	      var coords = _this.state.location.coordinates;
+	      var latLng = { lat: coords.latitude, lng: coords.longitude };
+	      var map = new google.maps.Map(_this.refs.map, {
+	        center: latLng,
+	        zoom: 16
+	      });
+	      var marker = new google.maps.Marker({
+	        position: latLng,
+	        title: _this.state.location.name,
+	        animation: google.maps.Animation.DROP
+	      });
+	      marker.setMap(map);
+	    };
+	
+	    _this.state = {
+	      location: _this.props.location,
+	      error: _this.props.error
+	    };
+	    return _this;
+	  }
+	
+	  _createClass(Display, [{
+	    key: 'componentDidMount',
+	    value: function componentDidMount() {
+	      this.renderMap();
+	      (0, _scrollIntoViewIfNeeded2.default)(this.refs.display, false, {
+	        duration: 130
+	      });
+	    }
+	  }, {
+	    key: 'componentWillReceiveProps',
+	    value: function componentWillReceiveProps(nextProps) {
+	      if (this.props.location.id !== nextProps.location.id) {
+	        this.setState({
+	          location: nextProps.location
+	        });
+	        (0, _scrollIntoViewIfNeeded2.default)(this.refs.display, false, {
+	          duration: 130
+	        });
+	      }
+	    }
+	  }, {
+	    key: 'render',
+	    value: function render() {
+	      var location = this.state.location;
+	      return _react2.default.createElement(
+	        'div',
+	        { className: 'display', ref: 'display' },
+	        _react2.default.createElement(
+	          'h3',
+	          { className: 'congrats' },
+	          'Congratulations, you\'re going to:'
+	        ),
+	        _react2.default.createElement(
+	          'h3',
+	          { className: 'name' },
+	          _react2.default.createElement(
+	            'a',
+	            { target: '_blank', href: location.url },
+	            location.name
+	          )
+	        ),
+	        _react2.default.createElement(
+	          'h3',
+	          { className: 'price' },
+	          location.price
+	        ),
+	        _react2.default.createElement(
+	          'p',
+	          { className: 'address' },
+	          _react2.default.createElement(
+	            'a',
+	            { target: '_blank', href: 'http://maps.google.com/maps?ll=' + location.coordinates.latitude + ',' + location.coordinates.longitude },
+	            location.location.display_address[0],
+	            ', ',
+	            location.location.display_address[1],
+	            _react2.default.createElement('br', null),
+	            location.location.display_address[2]
+	          )
+	        ),
+	        _react2.default.createElement(
+	          'ul',
+	          { className: 'categories' },
+	          this.getCategories()
+	        ),
+	        _react2.default.createElement(
+	          'div',
+	          { className: 'columns' },
+	          _react2.default.createElement(
+	            'div',
+	            { className: 'left' },
+	            this.getRestaurantImage()
+	          ),
+	          _react2.default.createElement(
+	            'div',
+	            { className: 'right' },
+	            _react2.default.createElement('div', { className: 'map', ref: 'map' })
+	          )
+	        )
+	      );
+	    }
+	  }]);
+	
+	  return Display;
+	}(_react2.default.Component);
+	
+	exports.default = Display;
 
 /***/ }
 /******/ ]);

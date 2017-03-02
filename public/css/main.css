@@ -82,7 +82,8 @@ h2 {
   font-size: 16px;
   font-weight: 400;
   text-align: center;
-  width: 70%;
+  width: 80%;
+  max-width: 700px;
   margin: 0 auto;
 }
 
@@ -90,6 +91,7 @@ h2 {
   display: block;
   margin: 0 auto;
   width: 80%;
+  max-width: 700px;
 }
 
 .address-form {
@@ -112,6 +114,7 @@ h2 {
 
 .form-container input {
   margin: 5px;
+  flex-grow: 1;
   padding: 10px 30px 10px 10px;
   font-size: 16px;
   border: 1px solid #AAA;
@@ -193,7 +196,7 @@ h2 {
   box-shadow: 3px 3px #CDCDCD;
 }
 
-h3.congrats {
+.congrats {
   text-align: center;
   padding-bottom: 0;
   color: #414141;
@@ -275,8 +278,7 @@ p.address a, p.address a:hover, p.address a:active, p.address a:visited {
 
 
 
-
-@media (max-width: 620px) {
+@media (max-width: 780px) {
 
   h2 {
     padding: 10px;
