@@ -78,22 +78,6 @@ class Display extends React.Component {
     return <div className="restaurant-photo" style={style}></div>
   }
 
-  // renderMap = () => {
-  //   const coords = this.state.location.coordinates;
-  //   const latLng = {lat: coords.latitude, lng: coords.longitude};
-  //   const map = new google.maps.Map(this.refs.map, {
-  //     center: latLng,
-  //     zoom: 16
-  //   });
-  //   console.log(map)
-  //   const marker = new google.maps.Marker({
-  //     position: latLng,
-  //     title: this.state.location.name,
-  //     animation: google.maps.Animation.DROP
-  //   });
-  //   marker.setMap(map);
-  // }
-
   render() {
     const location = this.state.location;
     return (

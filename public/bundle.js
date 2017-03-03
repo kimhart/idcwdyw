@@ -28085,24 +28085,6 @@
 	    }
 	  }, {
 	    key: 'render',
-	
-	
-	    // renderMap = () => {
-	    //   const coords = this.state.location.coordinates;
-	    //   const latLng = {lat: coords.latitude, lng: coords.longitude};
-	    //   const map = new google.maps.Map(this.refs.map, {
-	    //     center: latLng,
-	    //     zoom: 16
-	    //   });
-	    //   console.log(map)
-	    //   const marker = new google.maps.Marker({
-	    //     position: latLng,
-	    //     title: this.state.location.name,
-	    //     animation: google.maps.Animation.DROP
-	    //   });
-	    //   marker.setMap(map);
-	    // }
-	
 	    value: function render() {
 	      var location = this.state.location;
 	      return _react2.default.createElement(
