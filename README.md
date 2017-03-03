@@ -12,8 +12,8 @@ This one goes out to the lazy people — IDCWDYW chooses a restaurant within 2 m
 * Google Maps API
 
 ### Home:
-<img src="IDCWDYW.png" alt="IDCWDYW" width="700px" height="auto">
+<img src="IDCWDYW.png" alt="IDCWDYW" height="auto">
 
 ### Search results:
-<img src="IDCWDYW2.png" alt="IDCWDYW2" width="700px" height="auto">
+<img src="IDCWDYW2.png" alt="IDCWDYW2" height="auto">
 
