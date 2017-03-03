@@ -27642,25 +27642,25 @@
 	              _react2.default.createElement('input', { defaultChecked: true, id: 'check1', type: 'checkbox', value: 1, ref: 'price1', className: 'price-check' }),
 	              _react2.default.createElement(
 	                'label',
-	                { htmlFor: 'check1' },
+	                { className: 'special-check', htmlFor: 'check1' },
 	                '$'
 	              ),
 	              _react2.default.createElement('input', { defaultChecked: true, id: 'check2', type: 'checkbox', value: 2, ref: 'price2', className: 'price-check' }),
 	              _react2.default.createElement(
 	                'label',
-	                { htmlFor: 'check2' },
+	                { className: 'special-check', htmlFor: 'check2' },
 	                '$$'
 	              ),
 	              _react2.default.createElement('input', { defaultChecked: true, id: 'check3', type: 'checkbox', value: 3, ref: 'price3', className: 'price-check' }),
 	              _react2.default.createElement(
 	                'label',
-	                { htmlFor: 'check3' },
+	                { className: 'special-check', htmlFor: 'check3' },
 	                '$$$'
 	              ),
 	              _react2.default.createElement('input', { defaultChecked: true, id: 'check4', type: 'checkbox', value: 4, ref: 'price4', className: 'price-check' }),
 	              _react2.default.createElement(
 	                'label',
-	                { htmlFor: 'check4' },
+	                { className: 'special-check', htmlFor: 'check4' },
 	                '$$$$'
 	              )
 	            ),

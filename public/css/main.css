@@ -112,7 +112,7 @@ h2 {
 }
 
 .form-group label {
-  margin-right: 20px;
+  margin-right: 10px;
   font-size: 16px;
 }
 
@@ -173,7 +173,7 @@ h2 {
 .form-container input[type=checkbox] {
   display: inline;
   width: auto;
-  margin: 5px 5px 5px 10px;
+  margin: 5px;
   text-align: center;
 }
 
@@ -195,10 +195,43 @@ h2 {
 .topic-label {
   display: block;
   text-align: center;
-  margin-top: 20px;
   font-weight: 600;
   font-size: 14px;
   padding: 5px;
+}
+
+input[type=checkbox].price-check {
+  position:absolute; z-index:-1000; left:-1000px; overflow: hidden; clip: rect(0 0 0 0); height:1px; width:1px; margin:-1px; padding:0; border:0;
+}
+
+input[type=checkbox].price-check + label.special-check {
+  padding-left: 20px;
+  margin: 0 10px 0 10px;
+  height:15px; 
+  display:inline-block;
+  line-height:15px;
+  background-repeat:no-repeat;
+  background-position: 0 0;
+  font-size:15px;
+  vertical-align:middle;
+  cursor:pointer;
+}
+
+label.special-check {
+  margin-left: 10px;
+}
+
+input[type=checkbox].price-check:checked + label.special-check {
+  background-position: 0 -15px;
+}
+label.special-check {
+  background-image:url(http://csscheckbox.com/checkboxes/u/csscheckbox_7d537c4632e8896ff931e72bf53e4258.png);
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 
 .error {

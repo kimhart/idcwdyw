@@ -53,10 +53,10 @@ class AddressForm extends React.Component {
           <div className="form-row">
             <div className="form-group">
               <span className="topic-label">Price Range:</span>
-              <input defaultChecked id="check1" type="checkbox" value={1} ref="price1" className="price-check" /><label htmlFor="check1">$</label>
-              <input defaultChecked id="check2" type="checkbox" value={2} ref="price2" className="price-check" /><label htmlFor="check2">$$</label>
-              <input defaultChecked id="check3" type="checkbox" value={3} ref="price3" className="price-check" /><label htmlFor="check3">$$$</label>
-              <input defaultChecked id="check4" type="checkbox" value={4} ref="price4" className="price-check" /><label htmlFor="check4">$$$$</label>
+              <input defaultChecked id="check1" type="checkbox" value={1} ref="price1" className="price-check" /><label className="special-check"  htmlFor="check1">$</label>
+              <input defaultChecked id="check2" type="checkbox" value={2} ref="price2" className="price-check" /><label className="special-check" htmlFor="check2">$$</label>
+              <input defaultChecked id="check3" type="checkbox" value={3} ref="price3" className="price-check" /><label className="special-check" htmlFor="check3">$$$</label>
+              <input defaultChecked id="check4" type="checkbox" value={4} ref="price4" className="price-check" /><label className="special-check" htmlFor="check4">$$$$</label>
             </div>
             <div className="form-group">
               <span className="topic-label radius">Max distance (miles):</span>
